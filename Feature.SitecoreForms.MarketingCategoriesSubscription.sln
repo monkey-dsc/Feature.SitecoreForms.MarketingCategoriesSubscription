@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{9D88C75F-28AC-43F8-9D9D-4ED25D651370}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		NuGet.Config = NuGet.Config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tds", ".tds", "{3323273F-8504-4BDB-ACB7-63B3D0CAB847}"
+	ProjectSection(SolutionItems) = preProject
+		TdsGlobal.config = TdsGlobal.config
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Feature.SitecoreForms.MarketingCategoriesSubscription", "src\website\Feature.SitecoreForms.MarketingCategoriesSubscription.csproj", "{5B22BEB0-5C56-456C-A8A2-EF67A958C7E1}"
+EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "Feature.SitecoreForms.MarketingCategoriesSubscription.Core", "src\serialization\core\Feature.SitecoreForms.MarketingCategoriesSubscription.Core.scproj", "{40D5D21D-AA4B-446E-846F-B8B9F2891F98}"
+EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "Feature.SitecoreForms.MarketingCategoriesSubscription.Master", "src\serialization\master\Feature.SitecoreForms.MarketingCategoriesSubscription.Master.scproj", "{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B22BEB0-5C56-456C-A8A2-EF67A958C7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B22BEB0-5C56-456C-A8A2-EF67A958C7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B22BEB0-5C56-456C-A8A2-EF67A958C7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B22BEB0-5C56-456C-A8A2-EF67A958C7E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D5D21D-AA4B-446E-846F-B8B9F2891F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D5D21D-AA4B-446E-846F-B8B9F2891F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D5D21D-AA4B-446E-846F-B8B9F2891F98}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{40D5D21D-AA4B-446E-846F-B8B9F2891F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D5D21D-AA4B-446E-846F-B8B9F2891F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D5D21D-AA4B-446E-846F-B8B9F2891F98}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22AC693A-78C5-4E6A-ACA3-CBC6958AB02C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25869F8F-E9CA-484C-8A29-42C731E8B9DF}
+	EndGlobalSection
+EndGlobal

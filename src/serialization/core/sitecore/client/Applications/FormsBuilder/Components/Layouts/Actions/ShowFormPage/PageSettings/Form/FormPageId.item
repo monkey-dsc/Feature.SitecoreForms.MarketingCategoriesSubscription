@@ -1,0 +1,155 @@
+----item----
+version: 1
+id: {D44D0329-F4D7-4AAE-A05C-3A8CECF4DB48}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/ShowFormPage/PageSettings/Form/FormPageId
+parent: {BC499E27-2CBB-4B5C-B7D9-EAA0C0B757A8}
+name: FormPageId
+master: {00000000-0000-0000-0000-000000000000}
+template: {4640F8F6-FF25-4615-8A40-FE9F0C87225E}
+templatekey: FormDropList Parameters
+created: 20190108T202830Z
+
+----field----
+field: {0B6B2D34-5308-4AA8-B59D-85BA47E8B8AA}
+name: ValueFieldName
+key: valuefieldname
+content-length: 6
+
+itemId
+----field----
+field: {AE95C662-AF6A-4156-862D-82924AB52C42}
+name: DisplayFieldName
+key: displayfieldname
+content-length: 4
+
+name
+----field----
+field: {A176E7B0-1C0B-4F2E-A494-2DF342A75C0E}
+name: IsLabelOnTop
+key: islabelontop
+content-length: 1
+
+1
+----version----
+language: de-DE
+version: 1
+revision: 9a4cfc1a-c6a1-4479-b0d6-96bf8171da27
+
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 49
+
+Seite die nach dem Absenden angezeigt werden soll
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 20
+
+ID der Formularseite
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190528T105326Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+9a4cfc1a-c6a1-4479-b0d6-96bf8171da27
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190528T105417Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: en
+version: 1
+revision: 2c94dd82-93e1-4ff3-ad96-7f1d7d5d1c58
+
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 25
+
+Page to show after submit
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20180910T094641Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+2c94dd82-93e1-4ff3-ad96-7f1d7d5d1c58
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20180910T094846Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

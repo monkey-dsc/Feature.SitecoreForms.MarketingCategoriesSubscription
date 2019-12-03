@@ -1,0 +1,541 @@
+----item----
+version: 1
+id: {53992B5D-0A81-4E35-84D8-3DC726F08456}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Components/Layouts/PropertyGridForm/PageSettings/Settings/Marketing Preferences/Exm Options/Manager Root Id
+parent: {FCA32AE9-758E-4545-9C8D-770361FA662C}
+name: Manager Root Id
+master: {00000000-0000-0000-0000-000000000000}
+template: {A5491B5B-9423-4D8A-83CC-05C5B2348FF3}
+templatekey: FormItemTreeView Parameters
+created: 20190814T140440Z
+
+----field----
+field: {0CC7F24B-2013-46C6-8AE3-5233D094FF7C}
+name: StaticData
+key: staticdata
+content-length: 17
+
+/sitecore/content
+----field----
+field: {A176E7B0-1C0B-4F2E-A494-2DF342A75C0E}
+name: IsLabelOnTop
+key: islabelontop
+content-length: 1
+
+1
+----field----
+field: {3E079FC3-6B2D-41C9-9204-374A786FC761}
+name: BindingConfiguration
+key: bindingconfiguration
+content-length: 28
+
+managerRootId=SelectedItemId
+----field----
+field: {E53DD72A-CC21-4771-A6B4-17762365E2B7}
+name: IsRequired
+key: isrequired
+content-length: 1
+
+1
+----field----
+field: {B69B5D49-A984-4C3F-9F1C-97197FB1DBEC}
+name: ShowSitecoreIcons
+key: showsitecoreicons
+content-length: 1
+
+1
+----field----
+field: {82E7894F-D12D-4110-9D50-33CC59F288B2}
+name: ShowIconImage
+key: showiconimage
+content-length: 1
+
+1
+----field----
+field: {4CEC56F0-9FE2-4980-8085-62B0A0AB51EC}
+name: Database
+key: database
+content-length: 24
+
+$context_contentdatabase
+----field----
+field: {1CBCEDAC-5370-4C78-83B9-3BF012423802}
+name: PreLoadItem
+key: preloaditem
+content-length: 0
+
+
+----field----
+field: {A105BD19-85B3-4681-88A9-DBCB402F6F6D}
+name: SelectedItemId
+key: selecteditemid
+content-length: 0
+
+
+----field----
+field: {2137566A-E834-4CC5-BC91-E689D40624A4}
+name: IsPreLoadItemSelected
+key: ispreloaditemselected
+content-length: 0
+
+
+----field----
+field: {1AF7E858-0F3A-4C35-89EF-F24A385EC3FE}
+name: IsPreLoadItemExpanded
+key: ispreloaditemexpanded
+content-length: 0
+
+
+----field----
+field: {9E60AD66-4858-4952-97CA-5D67E457CF3F}
+name: SelectedItem
+key: selecteditem
+content-length: 0
+
+
+----field----
+field: {8B36F624-66A1-4B8C-B4B9-B358266B520F}
+name: SelectedValue
+key: selectedvalue
+content-length: 0
+
+
+----field----
+field: {9B500DE8-8361-43EA-BA66-77F390F72B8D}
+name: CheckedItems
+key: checkeditems
+content-length: 0
+
+
+----field----
+field: {52358FB2-5864-465D-B6CF-7C840FD80CFE}
+name: CheckedValues
+key: checkedvalues
+content-length: 0
+
+
+----field----
+field: {4B231227-AB32-45DA-9D5C-C48F5FD87BF9}
+name: ClickFolderMode
+key: clickfoldermode
+content-length: 17
+
+Select and Expand
+----field----
+field: {E0F5C2E5-EA32-4463-AEF5-925D4194B4A2}
+name: IsCheckModeEnabled
+key: ischeckmodeenabled
+content-length: 0
+
+
+----field----
+field: {E46CF3AA-5AD6-4A61-AD2B-D9D5D6698B7D}
+name: CheckMode
+key: checkmode
+content-length: 6
+
+Single
+----field----
+field: {5A8D0155-FB0C-4500-BFFD-9EC93207EEF7}
+name: Template
+key: template
+content-length: 12
+
+Manager Root
+----field----
+field: {4552DA16-D994-4301-AEB1-ADC82CC69623}
+name: BaseTemplates
+key: basetemplates
+content-length: 77
+
+{CF9C8A2A-2794-4FEA-980A-EF8426F3D6C3}|{772A4490-E7B3-426A-BD91-A93B500E6EC7}
+----field----
+field: {A678FA80-DCF3-438F-A2CD-08BEBAA668F2}
+name: CheckableTemplates
+key: checkabletemplates
+content-length: 38
+
+{CF9C8A2A-2794-4FEA-980A-EF8426F3D6C3}
+----field----
+field: {06D5295C-ED2F-4A54-9BF2-26228D113318}
+name: __Icon
+key: __icon
+content-length: 28
+
+Office/32x32/mail_filter.png
+----version----
+language: da
+version: 1
+revision: 7c033bd8-758e-42a0-aa06-1ff3f6e20945
+
+----field----
+field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
+name: HelpText
+key: helptext
+content-length: 40
+
+ Manager rod, hvis kategorier skal vises
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 12
+
+ Manager rod
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 15
+
+ Manager rod id
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190906T162734Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+7c033bd8-758e-42a0-aa06-1ff3f6e20945
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190906T163623Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: de-DE
+version: 1
+revision: 59072930-45f8-48a6-b0fc-c23b41b665b3
+
+----field----
+field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
+name: HelpText
+key: helptext
+content-length: 53
+
+Manager Root deren Kategorien angezeigt werden sollen
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 16
+
+EXM Manager Root
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 15
+
+Manager Root Id
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190814T140440Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+59072930-45f8-48a6-b0fc-c23b41b665b3
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190918T183920Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: en
+version: 1
+revision: 36912161-53bd-472e-a218-fe7fce966918
+
+----field----
+field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
+name: HelpText
+key: helptext
+content-length: 49
+
+Manager Root whose categories should be displayed
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 16
+
+EXM Manager Root
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 15
+
+Manager Root Id
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190906T162133Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+36912161-53bd-472e-a218-fe7fce966918
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190906T163441Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: ja-JP
+version: 1
+revision: 1bc88292-33f4-40c8-b29d-ed5cf4d69a18
+
+----field----
+field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
+name: HelpText
+key: helptext
+content-length: 19
+
+ カテゴリを表示するマネージャールート
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 9
+
+マネージャールート
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 12
+
+ マネージャールートID
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190906T162902Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+1bc88292-33f4-40c8-b29d-ed5cf4d69a18
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190906T163458Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: zh-CN
+version: 1
+revision: 58a98a87-68dd-4cc8-aae3-00b164cf7f62
+
+----field----
+field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
+name: HelpText
+key: helptext
+content-length: 13
+
+管理员Root应显示其类别
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 7
+
+ 经理Root
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 6
+
+ 经理根ID
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190906T162950Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+58a98a87-68dd-4cc8-aae3-00b164cf7f62
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190906T163514Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />

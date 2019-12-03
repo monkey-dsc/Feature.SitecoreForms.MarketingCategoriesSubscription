@@ -1,0 +1,135 @@
+----item----
+version: 1
+id: {3B088F2A-5DF9-4C15-9EF8-1FF79A4E46FE}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/ShowFormPage
+parent: {A3E5E09F-1422-4050-9414-DC959AA60D7B}
+name: ShowFormPage
+master: {00000000-0000-0000-0000-000000000000}
+template: {5F2C442F-2554-4C80-B1D9-2195FA6168B1}
+templatekey: Speak-BasePage
+created: 20190108T202829Z
+
+----field----
+field: {F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}
+name: __Renderings
+key: __renderings
+content-length: 1138
+
+<r>
+  <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{5A7CF08C-3647-4F56-B189-9E8C0531FBAF}">
+    <r id="{DAFAFFB8-74AF-4141-A96A-70B16834CEC6}" par="SpeakCoreVersion=%7b3F937240-C16E-4229-9641-4CE5B4CB4ABA%7d&amp;PageCodeScriptFileName=%2fsitecore%2fshell%2fclient%2fApplications%2fFormsBuilder%2fLayouts%2fActions%2fShowFormPage.js" ph="Page.Code" uid="{7DA762F9-BD58-429B-9902-B18FA1302F33}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=HeaderTitle&amp;IsVisible=0" ph="Page.Body" uid="{B279438B-3B40-42DB-A75F-7F931B812F11}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=HeaderSubTitle&amp;IsVisible=0" ph="Page.Body" uid="{51233ECC-574D-4AFE-B71F-89EE6672C361}" />
+    <r id="{08994B8F-7BF1-4963-815D-0FA8D75B3D86}" par="Id=MainBorder" ph="Page.Body" uid="{6963776F-C75F-4BDD-823F-D90E4EB6D2FE}" />
+    <r id="{59E2A66D-11D2-488D-A3BC-6C1C81326645}" par="FieldDefinitionType=%7b167CCD4C-34CE-4557-985B-0915D86B3D99%7d&amp;ConfigurationItem=%7bBC499E27-2CBB-4B5C-B7D9-EAA0C0B757A8%7d&amp;Id=SelectPageForm" ph="MainBorder.Content" uid="{14CE6468-71B6-4FE2-B39C-38CFDD37FC86}" />
+  </d>
+</r>
+----version----
+language: de-DE
+version: 1
+revision: 012d7ad2-e359-41ef-b778-66dbf321f629
+
+----field----
+field: {7205A57F-93B4-413A-AA9A-6B16BBC59565}
+name: BrowserTitle
+key: browsertitle
+content-length: 22
+
+Formularseite anzeigen
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 22
+
+Formularseite anzeigen
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190528T105202Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+012d7ad2-e359-41ef-b778-66dbf321f629
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190528T105229Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: en
+version: 1
+revision: 026d2c53-9b99-40ad-ade2-1c45b3ef9bb0
+
+----field----
+field: {7205A57F-93B4-413A-AA9A-6B16BBC59565}
+name: BrowserTitle
+key: browsertitle
+content-length: 12
+
+ShowFormPage
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20180910T093138Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+026d2c53-9b99-40ad-ade2-1c45b3ef9bb0
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20180910T095018Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

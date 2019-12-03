@@ -1,0 +1,113 @@
+----item----
+version: 1
+id: {3395B00A-9884-464A-8A62-8CF541E9C4D8}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/ShowFormPage/PageSettings/HeaderSubtitle
+parent: {C6BD2AAF-0144-47C5-A657-4AF58E365D2B}
+name: HeaderSubtitle
+master: {00000000-0000-0000-0000-000000000000}
+template: {46EFCF7F-6EBB-4059-B9BF-8EF47C4F5E20}
+templatekey: Text Parameters
+created: 20190108T202830Z
+
+----version----
+language: de-DE
+version: 1
+revision: ce2d5988-73c4-4be2-8227-7f8fd8fe8b94
+
+----field----
+field: {240ACDCD-C405-4E49-A96A-B3CAAB843920}
+name: Text
+key: text
+content-length: 67
+
+Formularseite auswählen die nach dem Absenden angezeigt werden muss
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190528T105432Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+ce2d5988-73c4-4be2-8227-7f8fd8fe8b94
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190528T105509Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />
+----version----
+language: en
+version: 1
+revision: 5e9cfea0-a2e2-4507-8d96-5bc5d592f3d4
+
+----field----
+field: {240ACDCD-C405-4E49-A96A-B3CAAB843920}
+name: Text
+key: text
+content-length: 50
+
+Pick the form page that must be shown after submit
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20180910T094402Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+5e9cfea0-a2e2-4507-8d96-5bc5d592f3d4
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20180910T094458Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

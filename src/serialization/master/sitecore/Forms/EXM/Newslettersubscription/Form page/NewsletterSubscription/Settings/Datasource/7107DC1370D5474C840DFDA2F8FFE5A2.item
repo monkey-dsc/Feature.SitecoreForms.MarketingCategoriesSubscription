@@ -1,0 +1,310 @@
+----item----
+version: 1
+id: {8F451E05-8771-4ACA-850F-26DF7F7073CD}
+database: master
+path: /sitecore/Forms/EXM/Newslettersubscription/Form page/NewsletterSubscription/Settings/Datasource/7107DC1370D5474C840DFDA2F8FFE5A2
+parent: {47D943E0-3A25-48F4-B43C-5BC1724AFE9E}
+name: 7107DC1370D5474C840DFDA2F8FFE5A2
+master: {00000000-0000-0000-0000-000000000000}
+template: {803949F2-13A1-4731-A0FA-E435EA0D822E}
+templatekey: Marketing category
+created: 20191202T125928Z
+
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 3
+
+100
+----version----
+language: da
+version: 1
+revision: 9752952b-2b64-4db5-96b5-8b14c3af19c7
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 127
+
+Jeg vil gerne holdes informeret om Sitecores nyeste produkter, funktioner og opdateringer. Send mig venligst disse meddelelser.
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 19
+
+Produktopdateringer
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T131419Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+9752952b-2b64-4db5-96b5-8b14c3af19c7
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T131419Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: de-DE
+version: 1
+revision: 992891d0-789d-4f27-bcad-0837714ac505
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 135
+
+Ich möchte über die neuesten Produkte, Funktionen und Updates von Sitecore informiert werden. Bitte senden Sie mir diese Ankündigungen.
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 15
+
+Produkt Updates
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T132505Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+992891d0-789d-4f27-bcad-0837714ac505
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T132505Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: en
+version: 1
+revision: e210bb50-4edd-42e0-b54c-7747be5c6ccd
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 116
+
+I want to stay informed about Sitecore's latest products, features, and updates. Please send me these announcements.
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 15
+
+Produkt Updates
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20180322T110106Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+e210bb50-4edd-42e0-b54c-7747be5c6ccd
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20191202T125928Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----version----
+language: ja-JP
+version: 1
+revision: 093baaf4-a05c-47d1-aa91-75281b9c84f7
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 39
+
+Sitecore の最新の製品、機能、アップデートについての情報を希望します。
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 8
+
+製品アップデート
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T133856Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+093baaf4-a05c-47d1-aa91-75281b9c84f7
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T133856Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: zh-CN
+version: 1
+revision: df4ffee8-0279-46ee-965a-7da826a7c060
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 35
+
+我想了解Sitecore的最新产品，功能和更新。 请把这些公告发给我。
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 4
+
+产品更新
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T134739Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+df4ffee8-0279-46ee-965a-7da826a7c060
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T134739Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin

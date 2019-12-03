@@ -1,0 +1,113 @@
+----item----
+version: 1
+id: {ED283BAA-1E8F-4CEE-9F99-2E514ADFFEEE}
+database: master
+path: /sitecore/Forms/EXM/Newslettersubscription/Form page/FormSection
+parent: {C912B78A-8CD4-45BA-89B0-C071842D2209}
+name: FormSection
+master: {00000000-0000-0000-0000-000000000000}
+template: {8CDDB194-F456-4A75-89B7-346F8F39F95C}
+templatekey: Section
+created: 20191127T153308Z
+
+----field----
+field: {84ECE662-5034-40CB-9C60-744DB64BB294}
+name: Field Key
+key: field key
+content-length: 32
+
+17F070BC5C354C97815ADF74B000BFAE
+----field----
+field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
+name: Conditions
+key: conditions
+content-length: 337
+
+{"fieldConditions":[{"matchTypeId":"{365C94DA-C1CD-4783-A91D-0D17A16C7117}","conditions":[{"fieldId":"9B07F41179FE43A2975BD11D7305149D","operatorId":"{1D38B217-A2EE-4E7B-B6ED-13E751462FEB}","value":"true"}],"actions":[{"fieldId":"17F070BC5C354C97815ADF74B000BFAE","actionTypeId":"{7F58C8DD-D7C0-4FB7-BB44-8EC6B5E1C3D9}","value":null}]}]}
+----version----
+language: de-DE
+version: 1
+revision: 415f96d4-dd6c-4c9a-8dfe-b3cc88202aa0
+
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20191127T153308Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+415f96d4-dd6c-4c9a-8dfe-b3cc88202aa0
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20191202T133953Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----version----
+language: en
+version: 1
+revision: 8f9f1a46-86a3-4b4e-852b-7fa2b41822d4
+
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20191129T110832Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+8f9f1a46-86a3-4b4e-852b-7fa2b41822d4
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20191202T134043Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc

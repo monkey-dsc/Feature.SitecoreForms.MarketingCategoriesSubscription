@@ -1,0 +1,310 @@
+----item----
+version: 1
+id: {6B3E5E5A-7842-41B4-9341-703A86D3310B}
+database: master
+path: /sitecore/Forms/EXM/Newslettersubscription/Form page/NewsletterSubscription/Settings/Datasource/B5C4092D4DDB4C8A9D279C5FC113F02A
+parent: {47D943E0-3A25-48F4-B43C-5BC1724AFE9E}
+name: B5C4092D4DDB4C8A9D279C5FC113F02A
+master: {00000000-0000-0000-0000-000000000000}
+template: {803949F2-13A1-4731-A0FA-E435EA0D822E}
+templatekey: Marketing category
+created: 20191202T125928Z
+
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 1
+
+0
+----version----
+language: da
+version: 1
+revision: 055eeefa-baaf-493d-b527-69b8ca5af333
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 191
+
+Jeg vil gerne have mere at vide om nyheder inden for branchen og modtage tips til, hvordan jeg kan blive endnu bedre til mit job. Jeg vil gerne modtage whitepapers, vejledninger, e-bøger osv.
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 21
+
+Førsteklasses indhold
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T131439Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+055eeefa-baaf-493d-b527-69b8ca5af333
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T131439Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: de-DE
+version: 1
+revision: 6869f86c-307b-4575-a13e-4e8ad1689a21
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 174
+
+Ich möchte wissen, was es Neues in der Branche gibt und Tipps erhalten, wie ich in meinem Beruf besser werden kann. Bitte senden Sie mir White Papers, Leitfäden, ebooks, etc.
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 14
+
+Premium Inhalt
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T132559Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+6869f86c-307b-4575-a13e-4e8ad1689a21
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T132559Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: en
+version: 1
+revision: 2f12f435-bd03-4560-9585-dc8f3cecf187
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 146
+
+I want to learn about what’s new in the industry and receive tips on how to be better at my job. Please send me white papers, guides, ebooks, etc.
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 14
+
+Premium Inhalt
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20180322T110045Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+2f12f435-bd03-4560-9585-dc8f3cecf187
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20191202T125928Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 12
+
+sitecore\dsc
+----version----
+language: ja-JP
+version: 1
+revision: 2979c73c-4e5a-4810-9862-5da7d3285f05
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 62
+
+業界の最新情報について学び、仕事に役立つヒントを得たいので、ホワイト ペーパー、ガイドブック、Eブックなどを送ってください。
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 11
+
+プレミアム コンテンツ
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T133913Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+2979c73c-4e5a-4810-9862-5da7d3285f05
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T133913Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: zh-CN
+version: 1
+revision: 626c9257-24cf-4d42-8ba8-cc9bca5040c2
+
+----field----
+field: {870A6B2A-4CAC-490B-8791-195B1FC464E5}
+name: Description
+key: description
+content-length: 45
+
+我想了解行业中的新功能，并获得如何更好地完成工作的提示。 请寄给我白皮书，指南，电子书等。
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 4
+
+优质内容
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190328T134811Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+626c9257-24cf-4d42-8ba8-cc9bca5040c2
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20190328T134811Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
