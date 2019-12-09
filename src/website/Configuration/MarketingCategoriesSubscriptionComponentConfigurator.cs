@@ -19,7 +19,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Configuration
             // EXM
             serviceCollection.AddSingleton<IExmSubscriptionManager, ExmSubscriptionManager>();
             serviceCollection.AddSingleton<IExmContactService, ExmContactService>();
-            //serviceCollection.AddSingleton<ICustomMarketingPreferencesService, CustomMarketingPreferencesService>();
 
             // Forms
             serviceCollection.AddSingleton<ISaveMarketingPreferencesService<SaveMarketingPreferencesData>, SaveMarketingPreferencesService<SaveMarketingPreferencesData>>();
