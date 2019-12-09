@@ -12,6 +12,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 {
     // ReSharper disable once UnusedMember.Global
     // Reason: Used by custom submit action
+    // Note: This code is taken from Sitecore Forms Extensions: https://github.com/bartverdonck/Sitecore-Forms-Extensions
+    // ToDo: Review this when upgrading to Sitecore 9.3
     public class ShowFormPageAction : SubmitActionBase<ShowFormPageData>
     {
         private readonly ILogger _logger;

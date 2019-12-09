@@ -1,6 +1,7 @@
 ﻿using System;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Models;
 using Sitecore.Analytics;
+using Sitecore.Analytics.Model;
 using Sitecore.Analytics.Tracking;
 using Sitecore.Configuration;
 using Sitecore.XConnect;
@@ -13,6 +14,35 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
 {
     internal class XConnectContactRepository : IXConnectContactRepository
     {
+        // ToDo: Review this, currently not in use!
+        public void ReloadContactDataIntoSession()
+        {
+            if (Tracker.Current?.Contact == null)
+            {
+                return;
+            }
+
+            if (!(CreateContactManager() is ContactManager manager))
+            {
+                return;
+            }
+
+            manager.RemoveFromSession(Tracker.Current.Contact.ContactId);
+            Tracker.Current.Session.Contact = manager.LoadContact(Tracker.Current.Contact.ContactId);
+        }
+        
+        // ToDo: Review this, currently not in use!
+        public void SaveNewContactToCollectionDb(Sitecore.Analytics.Tracking.Contact contact)
+        {
+            if (!(CreateContactManager() is ContactManager manager))
+            {
+                return;
+            }
+
+            contact.ContactSaveMode = ContactSaveMode.AlwaysSave;
+            manager.SaveContactToCollectionDb(Tracker.Current.Contact);
+        }
+
         public void UpdateOrCreateXConnectContactWithEmail(IXConnectContactWithEmail xConnectContact)
         {
             if (xConnectContact == null)
@@ -23,7 +53,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
             using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
                 var contactReference = new IdentifiedContactReference(xConnectContact.IdentifierSource, xConnectContact.IdentifierValue);
-                var contact = client.Get(contactReference, new ContactExpandOptions(EmailAddressList.DefaultFacetKey));
+                var contact = client.Get(contactReference, new ContactExpandOptions(PersonalInformation.DefaultFacetKey, EmailAddressList.DefaultFacetKey));
                 if (contact == null)
                 {
                     var newContact = new Contact(new ContactIdentifier(contactReference.Source, contactReference.Identifier, ContactIdentifierType.Known));
@@ -43,7 +73,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 }
             }
         }
-
+        
+        // ToDo: Review this, currently not in use!
         public void UpdateContactFacet<T>(
             IdentifiedContactReference reference,
             ContactExpandOptions expandOptions,
@@ -69,7 +100,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                     return;
                 }
 
-                MakeContactKnown(client, contact); // ToDo: Review if necessary!
+                MakeContactKnown(client, contact);
 
                 var facet = contact.GetFacet<T>() ?? createFacet();
                 var data = facet;
@@ -77,6 +108,11 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 client.SetFacet(contact, data);
                 client.Submit();
             }
+        }
+
+        private static object CreateContactManager()
+        {
+            return Factory.CreateObject("tracking/contactManager", true);
         }
 
         private static void SetEmail(Contact contact, IXConnectContactWithEmail xConnectContact, IXdbContext client)
@@ -89,7 +125,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
             var facet = contact.Emails();
             if (facet == null)
             {
-                // ToDo: Check how to validate Email in best practice, maybe check the email validation action in Sitecore Forms Extensions how they do that
                 facet = new EmailAddressList(new EmailAddress(xConnectContact.Email, false), "Preferred");
             }
             else
@@ -99,33 +134,10 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                     return;
                 }
 
-                // ToDo: Check how to validate Email in best practice, maybe check the email validation action in Sitecore Forms Extensions how they do that
                 facet.PreferredEmail = new EmailAddress(xConnectContact.Email, false);
             }
 
             client.SetEmails(contact, facet);
-        }
-
-        public void ReloadContactDataIntoSession()
-        {
-            if (Tracker.Current?.Contact == null)
-            {
-                return;
-            }
-
-            if (!(CreateContactManager() is ContactManager manager))
-            {
-                return;
-            }
-
-            manager.RemoveFromSession(Tracker.Current.Contact.ContactId);
-            Tracker.Current.Session.Contact = manager.LoadContact(Tracker.Current.Contact.ContactId);
-        }
-
-
-        private static object CreateContactManager()
-        {
-            return Factory.CreateObject("tracking/contactManager", true);
         }
 
         private static void MakeContactKnown(IXdbContext client, Contact contact)
@@ -135,7 +147,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 return;
             }
 
-            client.AddContactIdentifier(contact, new ContactIdentifier("xDB.Tracker", Guid.NewGuid().ToString("N"), ContactIdentifierType.Known));
+            client.AddContactIdentifier(contact, new ContactIdentifier("exm-known", Guid.NewGuid().ToString("N"), ContactIdentifierType.Known));
         }
     }
 }

@@ -147,9 +147,9 @@ Manager Root
 field: {4552DA16-D994-4301-AEB1-ADC82CC69623}
 name: BaseTemplates
 key: basetemplates
-content-length: 77
+content-length: 155
 
-{CF9C8A2A-2794-4FEA-980A-EF8426F3D6C3}|{772A4490-E7B3-426A-BD91-A93B500E6EC7}
+{CF9C8A2A-2794-4FEA-980A-EF8426F3D6C3}|{1D4EE2F1-8734-4D46-B16C-4E01F5FDB1C5}|{9CD0C84E-F852-431F-8EC8-ED4CE1D25D8D}|{A87A00B1-E6DB-45AB-8B54-636FEC3B5523}
 ----field----
 field: {A678FA80-DCF3-438F-A2CD-08BEBAA668F2}
 name: CheckableTemplates
@@ -242,7 +242,7 @@ content-length: 5
 ----version----
 language: de-DE
 version: 1
-revision: 59072930-45f8-48a6-b0fc-c23b41b665b3
+revision: ed778a95-0d52-4480-99fc-d6cbb5433965
 
 ----field----
 field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
@@ -292,21 +292,21 @@ name: __Revision
 key: __revision
 content-length: 36
 
-59072930-45f8-48a6-b0fc-c23b41b665b3
+ed778a95-0d52-4480-99fc-d6cbb5433965
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20190918T183920Z
+20191202T144304Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock

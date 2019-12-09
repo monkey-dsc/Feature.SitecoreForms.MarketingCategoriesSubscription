@@ -1,53 +1,117 @@
 ﻿using System;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Constants;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Models;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using Sitecore.Analytics;
+using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.DependencyInjection;
+using Sitecore.EmailCampaign.Model.XConnect.Facets;
 using Sitecore.Framework.Conditions;
-using Sitecore.Modules.EmailCampaign.Core.Contacts;
 using Sitecore.XConnect;
+using Sitecore.XConnect.Collection.Model;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services
 {
     internal sealed class XConnectService : IXConnectService
     {
-        private readonly IContactService _contactService;
+        private readonly IExmContactService _exmContactService;
         private readonly IXConnectContactRepository _xConnectContactRepository;
 
         private const double Delay = 100;
         private const int RetryCount = 3;
 
         public XConnectService() : this(
-            ServiceLocator.ServiceProvider.GetService<IContactService>(),
+            ServiceLocator.ServiceProvider.GetService<IExmContactService>(),
             ServiceLocator.ServiceProvider.GetService<IXConnectContactRepository>())
         {
         }
 
-        public XConnectService(IContactService contactService, IXConnectContactRepository xConnectContactRepository)
+        public XConnectService(IExmContactService exmContactService, IXConnectContactRepository xConnectContactRepository)
         {
-            Condition.Requires(contactService, nameof(contactService)).IsNotNull();
+            Condition.Requires(exmContactService, nameof(exmContactService)).IsNotNull();
             Condition.Requires(xConnectContactRepository, nameof(xConnectContactRepository)).IsNotNull();
-            _contactService = contactService;
+            _exmContactService = exmContactService;
             _xConnectContactRepository = xConnectContactRepository;
+        }
+
+        public void CheckIdentifier(IXConnectContact contact)
+        {
+            if (contact == null)
+            {
+                throw new ArgumentNullException(nameof(contact));
+            }
+
+            if (string.IsNullOrEmpty(contact.IdentifierSource) || string.IsNullOrEmpty(contact.IdentifierValue))
+            {
+                throw new Exception("A contact must have an identifiersource and identifiervalue!");
+            }
+        }
+
+        public ContactIdentifier GetEmailContactIdentifierOfCurrentContact()
+        {
+            var current = Tracker.Current;
+            var contact = current?.Contact;
+
+            if (contact == null)
+            {
+                return null;
+            }
+
+            var xConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+            if (xConnectFacets?.Facets == null)
+            {
+                return null;
+            }
+
+            if (!xConnectFacets.Facets.ContainsKey(EmailAddressList.DefaultFacetKey))
+            {
+                return null;
+            }
+
+            if (xConnectFacets.Facets[EmailAddressList.DefaultFacetKey] is EmailAddressList facet)
+            {
+                return GetValueFromEmailAddressListFacet(facet);
+            }
+
+            return null;
         }
 
         public Contact GetXConnectContact(ContactIdentifier contactIdentifier, params string[] facetKeys)
         {
-            var contactWithRetry = _contactService.GetContactWithRetry(contactIdentifier, Delay, RetryCount, facetKeys);
+            var contactWithRetry = _exmContactService.GetContactWithRetry(contactIdentifier, Delay, RetryCount, facetKeys);
             return contactWithRetry;
         }
-
-        public void UpdateOrCreateContact(IXConnectContactWithEmail contact)
+        
+        public Contact GetXConnectContactByEmailAddress()
         {
-            CheckIdentifier(contact);
-            _xConnectContactRepository.UpdateOrCreateXConnectContactWithEmail(contact);
+            var contactIdentifier = GetEmailContactIdentifierOfCurrentContact();
+            return contactIdentifier == null ? null : _exmContactService.GetContactWithRetry(contactIdentifier, Delay, RetryCount, ExmKeyBehaviorCache.DefaultFacetKey);
         }
 
+        public void IdentifyCurrent(IXConnectContact contact)
+        {
+            CheckIdentifier(contact);
+            if (Tracker.Current?.Session != null)
+            { 
+                Tracker.Current.Session.IdentifyAs(contact.IdentifierSource, contact.IdentifierValue);
+            }
+        }
+        
+        // ToDo: Review this, currently not in use!
+        public void ReloadContactDataIntoSession()
+        {
+            _xConnectContactRepository.ReloadContactDataIntoSession();
+        }
+        
+        // ToDo: Review this, currently not in use!
         public void UpdateContactFacet<T>(ContactIdentifier contactIdentifier, string facetKey, Action<T> updateFacets) where T : Facet, new()
         {
             UpdateContactFacet(contactIdentifier, facetKey, updateFacets, () => new T());
         }
-
+        
+        // ToDo: Review this, currently not in use!
         public void UpdateContactFacet<T>(
             ContactIdentifier contactIdentifier,
             string facetKey,
@@ -62,18 +126,36 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
 
             _xConnectContactRepository.UpdateContactFacet(new IdentifiedContactReference(contactIdentifier.Source, contactIdentifier.Identifier), new ContactExpandOptions(facetKey), updateFacets, createFacet);
         }
-
-        private static void CheckIdentifier(IXConnectContact contact)
+        
+        // ToDo: Review this, currently not in use!
+        public void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet
         {
-            if (contact == null)
+            if (Tracker.Current == null || Tracker.Current.Contact == null)
             {
-                throw new ArgumentNullException(nameof(contact));
+                return;
             }
 
-            if (string.IsNullOrEmpty(contact.IdentifierSource) || string.IsNullOrEmpty(contact.IdentifierValue))
+            if (Tracker.Current.Contact.IsNew)
             {
-                throw new Exception("A contact must have an identifiersource and identifiervalue!");
+                _xConnectContactRepository.SaveNewContactToCollectionDb(Tracker.Current.Contact);
             }
+
+            var trackerIdentifier = new IdentifiedContactReference(Sitecore.Analytics.XConnect.DataAccess.Constants.IdentifierSource, Sitecore.Analytics.Tracker.Current.Contact.ContactId.ToString("N"));
+            _xConnectContactRepository.UpdateContactFacet(trackerIdentifier, new ContactExpandOptions(facetKey), updateFacets, createFacet);
+        }
+
+        public void UpdateOrCreateContact(IXConnectContactWithEmail contact)
+        {
+            CheckIdentifier(contact);
+            _xConnectContactRepository.UpdateOrCreateXConnectContactWithEmail(contact);
+        }
+        
+        private static ContactIdentifier GetValueFromEmailAddressListFacet(EmailAddressList facet)
+        {
+            var preferredEmail = facet.PreferredEmail;
+            var smtpAddress = preferredEmail?.SmtpAddress;
+
+            return !string.IsNullOrEmpty(smtpAddress) ? new ContactIdentifier(ContactIdentifiers.Email, facet.PreferredEmail.SmtpAddress, ContactIdentifierType.Known) : null;
         }
     }
 }

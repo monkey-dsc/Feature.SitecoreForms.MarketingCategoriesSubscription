@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.MarketingPreferences;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore;
 using Sitecore.Analytics;
@@ -21,13 +22,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
     [Serializable]
     public class MarketingPreferencesViewModel : CheckBoxListViewModel
     {
-        private readonly IExmContactService _exmContactService;
+        private readonly IXConnectService _xConnectService;
         private readonly IManagerRootService _managerRootService;
         private readonly ICustomMarketingPreferencesService _marketingPreferencesService;
         private readonly ILogger _logger;
 
         public MarketingPreferencesViewModel() : this(
-            ServiceLocator.ServiceProvider.GetService<IExmContactService>(),
+            ServiceLocator.ServiceProvider.GetService<IXConnectService>(),
             ServiceLocator.ServiceProvider.GetService<IManagerRootService>(),
             ServiceLocator.ServiceProvider.GetService<ICustomMarketingPreferencesService>(),
             ServiceLocator.ServiceProvider.GetService<ILogger>())
@@ -35,23 +36,21 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
         }
 
         public MarketingPreferencesViewModel(
-            IExmContactService exmContactService,
+            IXConnectService xConnectService,
             IManagerRootService managerRootService,
             ICustomMarketingPreferencesService marketingPreferencesService,
             ILogger logger)
         {
-            Condition.Requires(exmContactService, nameof(exmContactService)).IsNotNull();
+            Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
             Condition.Requires(managerRootService, nameof(managerRootService)).IsNotNull();
             Condition.Requires(marketingPreferencesService, nameof(marketingPreferencesService)).IsNotNull();
             Condition.Requires(logger, nameof(logger)).IsNotNull();
-            _exmContactService = exmContactService;
+            _xConnectService = xConnectService;
             _managerRootService = managerRootService;
             _marketingPreferencesService = marketingPreferencesService;
             _logger = logger;
         }
 
-        // Todo: Currently the TreeList is also displaying "Site"-Templates of Ulm, this should be removed if it goes public
-        // ToDo: Write a hint in your blog that this must be adjusted if Manager Roots are nested!!
         public string ContactListId { get; set; }
         public string ManagerRootId { get; set; }
 
@@ -88,9 +87,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
                 return;
             }
 
-            // ToDo: Comment this if you don't want to identify the contact and check the marketing preferences of him
-            var knownContact = _exmContactService.GetKnownXConnectContactByEmailAddress();
             var marketingPreferences = new List<MarketingPreference>();
+            var knownContact = _xConnectService.GetXConnectContactByEmailAddress();
             if (knownContact != null)
             {
                 marketingPreferences = _marketingPreferencesService.GetPreferences(knownContact, managerRoot.Id);

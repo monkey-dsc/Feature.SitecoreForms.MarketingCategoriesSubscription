@@ -1,6 +1,8 @@
 ﻿using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.MarketingPreferences;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Data;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Services;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Factories;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Repositories;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services;
@@ -19,6 +21,9 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Configuration
             serviceCollection.AddSingleton<IExmSubscriptionManager, ExmSubscriptionManager>();
             serviceCollection.AddSingleton<IExmContactService, ExmContactService>();
             serviceCollection.AddSingleton<ICustomMarketingPreferencesService, CustomMarketingPreferencesService>();
+
+            // Forms
+            serviceCollection.AddSingleton<ISaveMarketingPreferencesService<SaveMarketingPreferencesData>, SaveMarketingPreferencesService<SaveMarketingPreferencesData>>();
 
             // XConnect
             serviceCollection.AddSingleton<IXConnectContactFactory, XConnectContactFactory>();

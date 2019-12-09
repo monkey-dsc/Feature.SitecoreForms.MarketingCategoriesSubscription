@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Constants;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Analytics;
@@ -11,6 +12,7 @@ using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.Framework.Conditions;
 using Sitecore.Modules.EmailCampaign.Core.Contacts;
 using Sitecore.XConnect;
+using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact
@@ -43,12 +45,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Con
             _xConnectRetry = xConnectRetry;
         }
 
-        public Sitecore.XConnect.Contact GetKnownXConnectContactByEmailAddress()
-        {
-            var contactIdentifier = GetEmailAddressContactIdentifier();
-            return contactIdentifier == null ? null : _contactService.GetContactWithRetry(contactIdentifier, Delay, RetryCount, ExmKeyBehaviorCache.DefaultFacetKey);
-        }
-
         public void EnsureExmKeyBehaviorCache(Sitecore.XConnect.Contact contact)
         {
             var facet = contact.ExmKeyBehaviorCache();
@@ -74,41 +70,21 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Con
                 RetryCount);
         }
 
-        private static ContactIdentifier GetEmailAddressContactIdentifier()
+        public void ResetExmKeyBehaviorCache(Sitecore.XConnect.Contact contact)
         {
-            var current = Tracker.Current;
-            var contact = current?.Contact;
-
-            if (contact == null)
+            var facet = new ExmKeyBehaviorCache
             {
-                return null;
-            }
+                MarketingPreferences = new List<MarketingPreference>()
+            };
 
-            var xConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
-            if (xConnectFacets?.Facets == null)
-            {
-                return null;
-            }
-
-            if (!xConnectFacets.Facets.ContainsKey(EmailAddressList.DefaultFacetKey))
-            {
-                return null;
-            }
-
-            if (xConnectFacets.Facets[EmailAddressList.DefaultFacetKey] is EmailAddressList facet)
-            {
-                return GetValueFromEmailAddressListFacet(facet);
-            }
-
-            return null;
-        }
-
-        private static ContactIdentifier GetValueFromEmailAddressListFacet(EmailAddressList facet)
-        {
-            var preferredEmail = facet.PreferredEmail;
-            var smtpAddress = preferredEmail?.SmtpAddress;
-
-            return !string.IsNullOrEmpty(smtpAddress) ? new ContactIdentifier(ContactIdentifiers.Email, facet.PreferredEmail.SmtpAddress, ContactIdentifierType.Known) : null;
+            _xConnectRetry.RequestWithRetry(
+                client =>
+                {
+                    client.SetExmKeyBehaviorCache(contact, facet);
+                    client.Submit();
+                },
+                Delay,
+                RetryCount);
         }
     }
 }

@@ -6,15 +6,16 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Models
     {
         public string IdentifierSource => ContactIdentifiers.Email;
         public string IdentifierValue => Email;
+
         public string Email { get; set; }
 
         public XConnectContactWithEmail()
         {
         }
 
-        public XConnectContactWithEmail(string address)
+        public XConnectContactWithEmail(string email)
         {
-            Email = address;
+            Email = email;
         }
     }
 }
