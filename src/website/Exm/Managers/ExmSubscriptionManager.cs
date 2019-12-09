@@ -67,7 +67,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers
                 return false;
             }
 
-            // ToDo: Should a contact get another Subscription confirmation, if he is subscribed to the same preference again, added to other preferences and already added to the main list?
             var flag1 = _listManagerWrapper.IsSubscribed(recipientListId, contact);
             if (flag1 && !managerRoot.GlobalSubscription.IsInDefaultExcludeCollection(contact))
             {

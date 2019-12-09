@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers;
-using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.MarketingPreferences;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.Exceptions;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Data;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Services;
@@ -10,6 +9,7 @@ using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Factories;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services;
 using Sitecore.Configuration;
 using Sitecore.Diagnostics;
+using Sitecore.EmailCampaign.Cd.Services;
 using Sitecore.EmailCampaign.Model.XConnect;
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
 using Sitecore.ExM.Framework.Diagnostics;
@@ -31,7 +31,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         private readonly IXConnectService _xConnectService;
         private readonly IXConnectContactFactory _xConnectContactFactory;
         private readonly ISaveMarketingPreferencesService<T> _saveMarketingPreferencesService;
-        private readonly ICustomMarketingPreferencesService _marketingPreferenceService;
+        private readonly IMarketingPreferencesService _marketingPreferenceService;
         private readonly IExmSubscriptionManager _exmSubscriptionManager;
         private readonly bool _useDoubleOptIn = Settings.GetBoolSetting("NewsletterSubscription.UseDoubleOptInForSubscription", true); // GDPR, sorry for the default value!
 
@@ -41,7 +41,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             IXConnectService xConnectService,
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<T> saveMarketingPreferencesService,
-            ICustomMarketingPreferencesService marketingPreferenceService,
+            IMarketingPreferencesService marketingPreferenceService,
             IExmSubscriptionManager exmSubscriptionManager) : base(submitActionData)
         {
             Condition.Requires(logger, nameof(logger)).IsNotNull();

@@ -100,18 +100,16 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
         }
         
         // ToDo: Review this, currently not in use!
-        public void ReloadContactDataIntoSession()
-        {
-            _xConnectContactRepository.ReloadContactDataIntoSession();
-        }
+        //public void ReloadContactDataIntoSession()
+        //{
+        //    _xConnectContactRepository.ReloadContactDataIntoSession();
+        //}
         
-        // ToDo: Review this, currently not in use!
         public void UpdateContactFacet<T>(ContactIdentifier contactIdentifier, string facetKey, Action<T> updateFacets) where T : Facet, new()
         {
             UpdateContactFacet(contactIdentifier, facetKey, updateFacets, () => new T());
         }
         
-        // ToDo: Review this, currently not in use!
         public void UpdateContactFacet<T>(
             ContactIdentifier contactIdentifier,
             string facetKey,
@@ -128,21 +126,21 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
         }
         
         // ToDo: Review this, currently not in use!
-        public void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet
-        {
-            if (Tracker.Current == null || Tracker.Current.Contact == null)
-            {
-                return;
-            }
+        //public void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet
+        //{
+        //    if (Tracker.Current == null || Tracker.Current.Contact == null)
+        //    {
+        //        return;
+        //    }
 
-            if (Tracker.Current.Contact.IsNew)
-            {
-                _xConnectContactRepository.SaveNewContactToCollectionDb(Tracker.Current.Contact);
-            }
+        //    if (Tracker.Current.Contact.IsNew)
+        //    {
+        //        _xConnectContactRepository.SaveNewContactToCollectionDb(Tracker.Current.Contact);
+        //    }
 
-            var trackerIdentifier = new IdentifiedContactReference(Sitecore.Analytics.XConnect.DataAccess.Constants.IdentifierSource, Sitecore.Analytics.Tracker.Current.Contact.ContactId.ToString("N"));
-            _xConnectContactRepository.UpdateContactFacet(trackerIdentifier, new ContactExpandOptions(facetKey), updateFacets, createFacet);
-        }
+        //    var trackerIdentifier = new IdentifiedContactReference(Sitecore.Analytics.XConnect.DataAccess.Constants.IdentifierSource, Sitecore.Analytics.Tracker.Current.Contact.ContactId.ToString("N"));
+        //    _xConnectContactRepository.UpdateContactFacet(trackerIdentifier, new ContactExpandOptions(facetKey), updateFacets, createFacet);
+        //}
 
         public void UpdateOrCreateContact(IXConnectContactWithEmail contact)
         {

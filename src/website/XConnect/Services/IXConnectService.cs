@@ -17,17 +17,15 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
         void IdentifyCurrent(IXConnectContact contact);
         
         // ToDo: Review this, currently not in use!
-        void ReloadContactDataIntoSession();
+        // void ReloadContactDataIntoSession();
 
         void UpdateOrCreateContact(IXConnectContactWithEmail contact);
         
-        // ToDo: Review this, currently not in use!
         void UpdateContactFacet<T>(ContactIdentifier contactIdentifier, string facetKey, Action<T> updateFacets) where T : Facet, new();
         
-        // ToDo: Review this, currently not in use!
         void UpdateContactFacet<T>(ContactIdentifier contactIdentifier, string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet;
         
         // ToDo: Review this, currently not in use!
-        void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet;
+        //void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet;
     }
 }

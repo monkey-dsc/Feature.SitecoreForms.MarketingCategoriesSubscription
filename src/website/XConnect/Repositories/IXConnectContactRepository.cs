@@ -7,14 +7,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
     public interface IXConnectContactRepository
     {
         // ToDo: Review this, currently not in use!
-        void ReloadContactDataIntoSession();
+        // void ReloadContactDataIntoSession();
         
         // ToDo: Review this, currently not in use!
-        void SaveNewContactToCollectionDb(Sitecore.Analytics.Tracking.Contact contact);
+        // void SaveNewContactToCollectionDb(Sitecore.Analytics.Tracking.Contact contact);
 
         void UpdateOrCreateXConnectContactWithEmail(IXConnectContactWithEmail xConnectContact);
         
-        // ToDo: Review this, currently not in use!
         void UpdateContactFacet<T>(
             IdentifiedContactReference reference,
             ContactExpandOptions expandOptions,
