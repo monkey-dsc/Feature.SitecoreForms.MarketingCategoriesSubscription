@@ -1,9 +1,5 @@
 ﻿using System;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Models;
-using Sitecore.Analytics;
-using Sitecore.Analytics.Model;
-using Sitecore.Analytics.Tracking;
-using Sitecore.Configuration;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Configuration;
@@ -14,35 +10,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
 {
     internal class XConnectContactRepository : IXConnectContactRepository
     {
-        // ToDo: Review this, currently not in use!
-        //public void ReloadContactDataIntoSession()
-        //{
-        //    if (Tracker.Current?.Contact == null)
-        //    {
-        //        return;
-        //    }
-
-        //    if (!(CreateContactManager() is ContactManager manager))
-        //    {
-        //        return;
-        //    }
-
-        //    manager.RemoveFromSession(Tracker.Current.Contact.ContactId);
-        //    Tracker.Current.Session.Contact = manager.LoadContact(Tracker.Current.Contact.ContactId);
-        //}
-        
-        // ToDo: Review this, currently not in use!
-        //public void SaveNewContactToCollectionDb(Sitecore.Analytics.Tracking.Contact contact)
-        //{
-        //    if (!(CreateContactManager() is ContactManager manager))
-        //    {
-        //        return;
-        //    }
-
-        //    contact.ContactSaveMode = ContactSaveMode.AlwaysSave;
-        //    manager.SaveContactToCollectionDb(Tracker.Current.Contact);
-        //}
-
         public void UpdateOrCreateXConnectContactWithEmail(IXConnectContactWithEmail xConnectContact)
         {
             if (xConnectContact == null)
@@ -108,12 +75,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 client.Submit();
             }
         }
-        
-        // ToDo: Review this, currently not in use!
-        //private static object CreateContactManager()
-        //{
-        //    return Factory.CreateObject("tracking/contactManager", true);
-        //}
 
         private static void SetEmail(Contact contact, IXConnectContactWithEmail xConnectContact, IXdbContext client)
         {
