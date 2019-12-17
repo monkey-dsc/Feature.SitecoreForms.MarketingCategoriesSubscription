@@ -71,6 +71,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 firstName = GetFieldById(data.FieldFirstNameId, fields);
                 lastName = GetFieldById(data.FieldLastNameId, fields);
             }
+
             var newPersonalInformation = new PersonalInformation { FirstName = firstName, LastName = lastName };
 
             _xConnectService.UpdateContactFacet(
@@ -80,6 +81,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 {
                     x.FirstName = firstName;
                     x.LastName = lastName;
+                    x.PreferredLanguage = Context.Language.ToString();
                 },
                 () => newPersonalInformation);
         }
@@ -104,13 +106,14 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         {
             return model == null || string.IsNullOrEmpty(model.ManagerRootId) ? null : _managerRootService.GetManagerRoot(new Guid(model.ManagerRootId));
         }
-        
+
         public ContactList GetAndValidateContactList(MarketingPreferencesViewModel model, bool useDoubleOptIn)
         {
             if (model == null || string.IsNullOrEmpty(model.ContactListId))
             {
                 return null;
             }
+
             var contactList = _listManagerWrapper.FindById(new Guid(model.ContactListId));
             ValidateContactList(contactList, useDoubleOptIn);
             return contactList;
@@ -119,6 +122,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         public IEnumerable<MarketingPreference> GetSelectedMarketingPreferences(ListViewModel model, ManagerRoot managerRoot, IReadOnlyCollection<MarketingPreference> contactMarketingPreferences)
         {
             var preferencesList = new List<MarketingPreference>();
+
             if (model == null || !model.Value.Any())
             {
                 return preferencesList;
@@ -126,13 +130,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 
             foreach (var listFieldItem in model.Items)
             {
-                if (contactMarketingPreferences != null && contactMarketingPreferences.Any(x => x.MarketingCategoryId.ToString("B").ToUpper() == listFieldItem.Value))
-                {
-                    preferencesList.Add(CreateMarketingPreference(managerRoot, listFieldItem.Value, listFieldItem.Selected));
-                }
-                else if (model.Value.Contains(listFieldItem.Value))
+                if (listFieldItem.Selected)
                 {
                     preferencesList.Add(CreateMarketingPreference(managerRoot, listFieldItem.Value, true));
+                }
+                else if (contactMarketingPreferences.Any(x => x.MarketingCategoryId.ToString("B").ToUpper() == listFieldItem.Value))
+                {
+                    preferencesList.Add(CreateMarketingPreference(managerRoot, listFieldItem.Value, listFieldItem.Selected));
                 }
             }
 
@@ -145,7 +149,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             var field = (StringInputViewModel)fieldList.FirstOrDefault(x => x.ItemId == guid.ToString());
             return field != null ? field.Value : string.Empty;
         }
-        
+
 
         private static void ValidateContactList(ContactList contactList, bool useDoubleOptIn)
         {

@@ -8,7 +8,7 @@
 <label class="@Model.LabelCssClass">@Html.DisplayTextFor(t => Model.Title) @requiredMarker</label>
 <div class="@Model.CssClass">
     <input type="hidden" name="@Html.NameFor(m => Model.Value)" />
-    @Html.HiddenFor(x => x.ManagerRootId)
+    @Html.HiddenFor(x => x.ManagerRootId) 
     @Html.HiddenFor(x => x.ContactListId)
     @foreach (var item in Model.Items)
     {

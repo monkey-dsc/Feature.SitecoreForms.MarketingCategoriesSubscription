@@ -63,12 +63,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Exm\Services\MarketingPreferences\**" />
-      <EmbeddedResource Remove="Exm\Services\MarketingPreferences\**" />
-      <None Remove="Exm\Services\MarketingPreferences\**" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="App_Config\Include\Feature\MarketingCategoriesSubscription\Feature.SitecoreForms.MarketingCategoriesSubscription.DependencyInjection.config" />
       <None Remove="App_Config\Include\Feature\MarketingCategoriesSubscription\Feature.SitecoreForms.MarketingCategoriesSubscription.Processors.config" />
       <None Remove="App_Config\Include\Feature\MarketingCategoriesSubscription\Feature.SitecoreForms.MarketingCategoriesSubscription.Tracker.config" />

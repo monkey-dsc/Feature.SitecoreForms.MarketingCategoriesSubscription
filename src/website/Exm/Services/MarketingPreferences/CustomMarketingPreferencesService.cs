@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sitecore;
 using Sitecore.EmailCampaign.Core.Services;
 using Sitecore.EmailCampaign.Model.XConnect;
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
 using Sitecore.EmailCampaign.XConnect.Web;
 using Sitecore.Framework.Conditions;
+using Sitecore.XConnect.Client;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.MarketingPreferences
 {
-    // ToDo: Remove this class if getting the Marketing preferences works correct and use the Sitecore MarketingPreferenceService!
     internal sealed class CustomMarketingPreferencesService : ICustomMarketingPreferencesService
     {
         private readonly ICurrentDateProvider _currentDateProvider;
@@ -73,7 +72,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Mar
                 client =>
                 {
                     client.SetExmKeyBehaviorCache(contact, facet);
-                    client.SubmitAsync();
+                    client.Submit();
                 },
                 Delay,
                 RetryCount);
@@ -81,13 +80,12 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Mar
         }
 
         private List<MarketingPreference> Merge(
-            List<MarketingPreference> oldPreferences,
-            List<MarketingPreference> newPreferences)
+            IEnumerable<MarketingPreference> oldPreferences,
+            IEnumerable<MarketingPreference> newPreferences)
         {
-            var source = oldPreferences;
-            foreach (var newPreference1 in newPreferences)
+            var source = oldPreferences.ToList();
+            foreach (var newPreference in newPreferences)
             {
-                var newPreference = newPreference1;
                 var marketingPreference = source.FirstOrDefault(
                     x =>
                     {
