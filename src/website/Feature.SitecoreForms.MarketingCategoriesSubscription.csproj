@@ -63,9 +63,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="App_Config\Include\Feature\MarketingCategoriesSubscription\Feature.SitecoreForms.MarketingCategoriesSubscription.DependencyInjection.config" />
-      <None Remove="App_Config\Include\Feature\MarketingCategoriesSubscription\Feature.SitecoreForms.MarketingCategoriesSubscription.Processors.config" />
-      <None Remove="App_Config\Include\Feature\MarketingCategoriesSubscription\Feature.SitecoreForms.MarketingCategoriesSubscription.Tracker.config" />
       <None Remove="Blog Posts\images\condition.JPG" />
       <None Remove="Blog Posts\images\form fields.JPG" />
       <None Remove="Blog Posts\images\is equal to operator.JPG" />
@@ -113,6 +110,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="App_Config\Include\Feature\MarketingCategoriesSubscription\" />
       <Folder Include="XConnect\" />
     </ItemGroup>
 
