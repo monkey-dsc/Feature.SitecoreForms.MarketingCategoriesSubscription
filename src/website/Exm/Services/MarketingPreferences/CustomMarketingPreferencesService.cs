@@ -72,7 +72,9 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Mar
                 client =>
                 {
                     client.SetExmKeyBehaviorCache(contact, facet);
-                    client.Submit();
+                    // ToDo: This is still a problem! It works but throws errors in the logs!
+                    // ToDo: Switch back to the Sitecore MarketingPreferencesService... I think this was a problem with your old machine ... 
+                    client.Submit(); // ToDo: client.submitAsync();
                 },
                 Delay,
                 RetryCount);
