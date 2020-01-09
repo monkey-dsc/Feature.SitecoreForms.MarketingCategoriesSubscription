@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.MarketingPreferences;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore;
 using Sitecore.Analytics;
 using Sitecore.Data.Items;
 using Sitecore.DependencyInjection;
+using Sitecore.EmailCampaign.Cd.Services;
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
 using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.ExperienceForms.Mvc.Models;
@@ -24,13 +24,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
     {
         private readonly IXConnectService _xConnectService;
         private readonly IManagerRootService _managerRootService;
-        private readonly ICustomMarketingPreferencesService _marketingPreferencesService;
+        private readonly IMarketingPreferencesService _marketingPreferencesService;
         private readonly ILogger _logger;
 
         public MarketingPreferencesViewModel() : this(
             ServiceLocator.ServiceProvider.GetService<IXConnectService>(),
             ServiceLocator.ServiceProvider.GetService<IManagerRootService>(),
-            ServiceLocator.ServiceProvider.GetService<ICustomMarketingPreferencesService>(),
+            ServiceLocator.ServiceProvider.GetService<IMarketingPreferencesService>(),
             ServiceLocator.ServiceProvider.GetService<ILogger>())
         {
         }
@@ -38,7 +38,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
         public MarketingPreferencesViewModel(
             IXConnectService xConnectService,
             IManagerRootService managerRootService,
-            ICustomMarketingPreferencesService marketingPreferencesService,
+            IMarketingPreferencesService marketingPreferencesService,
             ILogger logger)
         {
             Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
