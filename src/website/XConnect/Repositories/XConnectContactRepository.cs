@@ -14,33 +14,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
 {
     internal class XConnectContactRepository : IXConnectContactRepository
     {
-        public void ReloadContactDataIntoSession()
-        {
-            if (Tracker.Current?.Contact == null)
-            {
-                return;
-            }
-
-            if (!(CreateContactManager() is ContactManager manager))
-            {
-                return;
-            }
-
-            manager.RemoveFromSession(Tracker.Current.Contact.ContactId);
-            Tracker.Current.Session.Contact = manager.LoadContact(Tracker.Current.Contact.ContactId);
-        }
-
-        public void SaveNewContactToCollectionDb(Contact contact)
-        {
-            if (!(CreateContactManager() is ContactManager manager))
-            {
-                return;
-            }
-
-            contact.ContactSaveMode = ContactSaveMode.AlwaysSave;
-            manager.SaveContactToCollectionDb(Tracker.Current.Contact);
-        }
-
         public void UpdateOrCreateXConnectContactWithEmail(IXConnectContactWithEmail xConnectContact)
         {
             if (xConnectContact == null)
@@ -110,6 +83,17 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 client.SetFacet(contact, data);
                 client.Submit();
             }
+        }
+
+        private void SaveNewContactToCollectionDb(Contact contact)
+        {
+            if (!(CreateContactManager() is ContactManager manager))
+            {
+                return;
+            }
+
+            contact.ContactSaveMode = ContactSaveMode.AlwaysSave;
+            manager.SaveContactToCollectionDb(Tracker.Current.Contact);
         }
 
         private static object CreateContactManager()

@@ -112,32 +112,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
             }
         }
 
-        public void ReloadContactDataIntoSession()
-        {
-            _xConnectContactRepository.ReloadContactDataIntoSession();
-        }
-
-        public void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets) where T : Facet, new()
-        {
-            UpdateCurrentContactFacet(facetKey, updateFacets, () => new T());
-        }
-
-        public void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet
-        {
-            if (Tracker.Current == null || Tracker.Current.Contact == null)
-            {
-                return;
-            }
-
-            if (Tracker.Current.Contact.IsNew)
-            {
-                _xConnectContactRepository.SaveNewContactToCollectionDb(Tracker.Current.Contact);
-            }
-
-            var trackerIdentifier = new IdentifiedContactReference(Sitecore.Analytics.XConnect.DataAccess.Constants.IdentifierSource, Tracker.Current.Contact.ContactId.ToString("N"));
-            _xConnectContactRepository.UpdateContactFacet(trackerIdentifier, new ContactExpandOptions(facetKey), updateFacets, createFacet);
-        }
-
         public void UpdateContactFacet<T>(ContactIdentifier contactIdentifier, string facetKey, Action<T> updateFacets) where T : Facet, new()
         {
             UpdateContactFacet(contactIdentifier, facetKey, updateFacets, () => new T());

@@ -16,12 +16,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
 
         void IdentifyCurrent(IXConnectContact contact);
 
-        void ReloadContactDataIntoSession();
-
-        void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets) where T : Facet, new();
-
-        void UpdateCurrentContactFacet<T>(string facetKey, Action<T> updateFacets, Func<T> createFacet) where T : Facet;
-
         void UpdateOrCreateContact(IXConnectContactWithEmail contact);
 
         void UpdateContactFacet<T>(ContactIdentifier contactIdentifier, string facetKey, Action<T> updateFacets) where T : Facet, new();
