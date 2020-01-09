@@ -1,7 +1,7 @@
 ﻿using System;
-using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Sitecore.Analytics;
 using Sitecore.Data.Items;
 using Sitecore.DependencyInjection;
 using Sitecore.ExperienceForms.Mvc.Models.Fields;
@@ -45,6 +45,11 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
 
         private bool IsKnownContact()
         {
+            if (Tracker.Current == null || Tracker.Current.Contact == null || Tracker.Current.Contact.IsNew)
+            {
+                return false;
+            }
+
             return _xConnectService.GetXConnectContactByEmailAddress() != null;
         }
     }

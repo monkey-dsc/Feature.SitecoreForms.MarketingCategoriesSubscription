@@ -98,6 +98,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             }
 
             var customXConnectContact = _xConnectContactFactory.CreateContactWithEmail(contactIdentifier.Identifier);
+
             _xConnectService.IdentifyCurrent(customXConnectContact);
             _xConnectService.UpdateOrCreateContact(customXConnectContact);
 
@@ -123,8 +124,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             }
 
             var contactList = _saveMarketingPreferencesService.GetAndValidateContactList(marketingPreferencesViewModel, _useDoubleOptIn);
-
             var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
+
             if (marketingPreferences.All(x => x.Preference == false))
             {
                 UnsubscribeFromAll(contact, contactIdentifier, managerRoot, contactList.ContactListDefinition.Id);

@@ -13,6 +13,7 @@ using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.ExperienceForms.Mvc.Models;
 using Sitecore.ExperienceForms.Mvc.Models.Fields;
 using Sitecore.Framework.Conditions;
+using Sitecore.Modules.EmailCampaign;
 using Sitecore.Modules.EmailCampaign.Services;
 using Sitecore.SecurityModel;
 
@@ -71,12 +72,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
 
         private void RenderListItems(Item item, string selectedManagerRootId)
         {
-            // We have to activate the Tracker because it's only activated on a form submit
-            // See: https://sitecore.stackexchange.com/questions/11673/analytics-tracker-current-is-null-in-sitecore-9-update-1-forms-submit-action-wit
-            // Note: The mentioned behavior is expected because the tracker should be only triggered upon a submit as it is expensive to keep it alive after navigating to the next or previous page
-            // But, we want to identify the contact and set the preferences of the contact as already checked
-            StartTracker();
-
             var database = Context.ContentDatabase ?? Context.Database;
             var managerRoot = _managerRootService.GetManagerRoot(new Guid(selectedManagerRootId));
 
@@ -86,14 +81,9 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
                 return;
             }
 
-            var marketingPreferences = new List<MarketingPreference>();
-            var knownContact = _xConnectService.GetXConnectContactByEmailAddress();
-            if (knownContact != null)
-            {
-                marketingPreferences = _marketingPreferencesService.GetPreferences(knownContact, managerRoot.Id);
-            }
-
+            var marketingPreferences = GetMarketingPreferences(managerRoot);
             var marketingCategoryGroups = managerRoot.Settings.MarketingCategoryGroups.Select(database.GetItem).ToList();
+
             if (!marketingCategoryGroups.Any())
             {
                 _logger.LogWarn("no marketing groups are associated to the manager root!");
@@ -117,6 +107,23 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
             {
                 base.UpdateDataSourceSettings(item);
             }
+        }
+
+        private List<MarketingPreference> GetMarketingPreferences(ManagerRoot managerRoot)
+        {
+            var marketingPreferences = new List<MarketingPreference>();
+            if (Tracker.Current == null || Tracker.Current.Contact == null || Tracker.Current.Contact.IsNew)
+            {
+                return marketingPreferences;
+            }
+
+            var knownContact = _xConnectService.GetXConnectContactByEmailAddress();
+            if (knownContact != null)
+            {
+                marketingPreferences = _marketingPreferencesService.GetPreferences(knownContact, managerRoot.Id);
+            }
+
+            return marketingPreferences;
         }
 
         private static bool IsSelected(IEnumerable<MarketingPreference> contactMarketingPreferences, Item marketingCategory)

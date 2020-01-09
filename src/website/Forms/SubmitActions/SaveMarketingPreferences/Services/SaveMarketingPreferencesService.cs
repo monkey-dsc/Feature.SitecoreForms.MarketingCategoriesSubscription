@@ -134,7 +134,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 {
                     preferencesList.Add(CreateMarketingPreference(managerRoot, listFieldItem.Value, true));
                 }
-                else if (contactMarketingPreferences.Any(x => x.MarketingCategoryId.ToString("B").ToUpper() == listFieldItem.Value))
+                else if (contactMarketingPreferences != null && contactMarketingPreferences.Any(x => x.MarketingCategoryId.ToString("B").ToUpper() == listFieldItem.Value))
                 {
                     preferencesList.Add(CreateMarketingPreference(managerRoot, listFieldItem.Value, listFieldItem.Selected));
                 }

@@ -7,9 +7,15 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Extensi
 {
     public static class AnalyticsToXConnectExtensions
     {
-        public static ContactIdentifier ConvertAnalyticsContactIdentifierToXConnectContactIdentifier(this IEnumerable<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
+        public static ContactIdentifier AnalyticsContactIdentifierToXConnectContactIdentifierByKnown(this IEnumerable<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
         {
             var identifier = contactIdentifiers.FirstOrDefault(x => x.Type == ContactIdentificationLevel.Known);
+            return identifier != null ? new ContactIdentifier(identifier.Source, identifier.Identifier, ContactIdentifierType.Known) : null;
+        }
+
+        public static ContactIdentifier AnalyticsContactIdentifierToXConnectContactIdentifierBySource(this IEnumerable<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers, string source)
+        {
+            var identifier = contactIdentifiers.FirstOrDefault(x => x.Source == source);
             return identifier != null ? new ContactIdentifier(identifier.Source, identifier.Identifier, ContactIdentifierType.Known) : null;
         }
     }

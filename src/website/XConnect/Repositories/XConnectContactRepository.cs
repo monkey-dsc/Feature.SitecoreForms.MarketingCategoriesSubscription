@@ -1,15 +1,46 @@
 ﻿using System;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Models;
+using Sitecore.Analytics;
+using Sitecore.Analytics.Model;
+using Sitecore.Analytics.Tracking;
+using Sitecore.Configuration;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Configuration;
 using Sitecore.XConnect.Collection.Model;
-using Contact = Sitecore.XConnect.Contact;
+using Contact = Sitecore.Analytics.Tracking.Contact;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Repositories
 {
     internal class XConnectContactRepository : IXConnectContactRepository
     {
+        public void ReloadContactDataIntoSession()
+        {
+            if (Tracker.Current?.Contact == null)
+            {
+                return;
+            }
+
+            if (!(CreateContactManager() is ContactManager manager))
+            {
+                return;
+            }
+
+            manager.RemoveFromSession(Tracker.Current.Contact.ContactId);
+            Tracker.Current.Session.Contact = manager.LoadContact(Tracker.Current.Contact.ContactId);
+        }
+
+        public void SaveNewContactToCollectionDb(Contact contact)
+        {
+            if (!(CreateContactManager() is ContactManager manager))
+            {
+                return;
+            }
+
+            contact.ContactSaveMode = ContactSaveMode.AlwaysSave;
+            manager.SaveContactToCollectionDb(Tracker.Current.Contact);
+        }
+
         public void UpdateOrCreateXConnectContactWithEmail(IXConnectContactWithEmail xConnectContact)
         {
             if (xConnectContact == null)
@@ -23,10 +54,15 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 var contact = client.Get(contactReference, new ContactExpandOptions(PersonalInformation.DefaultFacetKey, EmailAddressList.DefaultFacetKey));
                 if (contact == null)
                 {
-                    var newContact = new Contact(new ContactIdentifier(contactReference.Source, contactReference.Identifier, ContactIdentifierType.Known));
+                    var newContact = new Sitecore.XConnect.Contact(new ContactIdentifier(contactReference.Source, contactReference.Identifier, ContactIdentifierType.Known));
                     SetEmail(newContact, xConnectContact, client);
                     client.AddContact(newContact);
                     client.Submit();
+
+                    if (Tracker.Current != null && Tracker.Current.Contact != null)
+                    {
+                        SaveNewContactToCollectionDb(Tracker.Current.Contact);
+                    }
                 }
                 else
                 {
@@ -40,7 +76,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
                 }
             }
         }
-        
+
         public void UpdateContactFacet<T>(
             IdentifiedContactReference reference,
             ContactExpandOptions expandOptions,
@@ -76,7 +112,12 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
             }
         }
 
-        private static void SetEmail(Contact contact, IXConnectContactWithEmail xConnectContact, IXdbContext client)
+        private static object CreateContactManager()
+        {
+            return Factory.CreateObject("tracking/contactManager", true);
+        }
+
+        private static void SetEmail(Sitecore.XConnect.Contact contact, IXConnectContactWithEmail xConnectContact, IXdbContext client)
         {
             if (string.IsNullOrEmpty(xConnectContact.Email))
             {
@@ -101,7 +142,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
             client.SetEmails(contact, facet);
         }
 
-        private static void MakeContactKnown(IXdbContext client, Contact contact)
+        private static void MakeContactKnown(IXdbContext client, Sitecore.XConnect.Contact contact)
         {
             if (contact.IsKnown)
             {
