@@ -22,12 +22,12 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
     // Reason: Used by custom submit action
     public class SaveMarketingPreferencesAction : SaveMarketingPreferencesBase<SaveMarketingPreferencesData>
     {
-        private readonly IXConnectService _xConnectService;
+        private readonly IXConnectContactService _xConnectContactService;
 
         public SaveMarketingPreferencesAction(ISubmitActionData submitActionData) : this(
             submitActionData,
             ServiceLocator.ServiceProvider.GetService<ILogger>(),
-            ServiceLocator.ServiceProvider.GetService<IXConnectService>(),
+            ServiceLocator.ServiceProvider.GetService<IXConnectContactService>(),
             ServiceLocator.ServiceProvider.GetService<IXConnectContactFactory>(),
             ServiceLocator.ServiceProvider.GetService<ISaveMarketingPreferencesService<SaveMarketingPreferencesData>>(),
             ServiceLocator.ServiceProvider.GetService<IMarketingPreferencesService>(),
@@ -38,14 +38,14 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         public SaveMarketingPreferencesAction(
             ISubmitActionData submitActionData,
             ILogger logger,
-            IXConnectService xConnectService,
+            IXConnectContactService xConnectContactService,
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<SaveMarketingPreferencesData> saveMarketingPreferencesService,
             IMarketingPreferencesService marketingPreferencesService,
-            IExmSubscriptionManager exmSubscriptionManager) : base(submitActionData, logger, xConnectService, xConnectContactFactory, saveMarketingPreferencesService, marketingPreferencesService, exmSubscriptionManager)
+            IExmSubscriptionManager exmSubscriptionManager) : base(submitActionData, logger, xConnectContactService, xConnectContactFactory, saveMarketingPreferencesService, marketingPreferencesService, exmSubscriptionManager)
         {
-            Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
-            _xConnectService = xConnectService;
+            Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
+            _xConnectContactService = xConnectContactService;
         }
 
         protected override ContactIdentifier GetContactIdentifier(SaveMarketingPreferencesData data, IEnumerable<IViewModel> fields)
@@ -58,7 +58,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 return new ContactIdentifier(ContactIdentifiers.Email, emailAddressField.Value, ContactIdentifierType.Known);
             }
 
-            return _xConnectService.GetEmailContactIdentifierOfCurrentContact();
+            return _xConnectContactService.GetEmailContactIdentifierOfCurrentContact();
         }
     }
 }

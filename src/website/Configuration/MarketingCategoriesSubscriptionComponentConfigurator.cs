@@ -26,7 +26,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Configuration
             // XConnect
             serviceCollection.AddSingleton<IXConnectContactFactory, XConnectContactFactory>();
             serviceCollection.AddSingleton<IXConnectContactRepository, XConnectContactRepository>();
-            serviceCollection.AddSingleton<IXConnectService, XConnectService>();
+            serviceCollection.AddSingleton<IXConnectContactService, XConnectContactService>();
         }
     }
 }

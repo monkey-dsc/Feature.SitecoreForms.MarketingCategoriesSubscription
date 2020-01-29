@@ -15,7 +15,7 @@ using Sitecore.XConnect.Collection.Model;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services
 {
-    internal sealed class XConnectService : IXConnectService
+    internal sealed class XConnectContactService : IXConnectContactService
     {
         private readonly IExmContactService _exmContactService;
         private readonly IXConnectContactRepository _xConnectContactRepository;
@@ -23,13 +23,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
         private const double Delay = 100;
         private const int RetryCount = 3;
 
-        public XConnectService() : this(
+        public XConnectContactService() : this(
             ServiceLocator.ServiceProvider.GetService<IExmContactService>(),
             ServiceLocator.ServiceProvider.GetService<IXConnectContactRepository>())
         {
         }
 
-        public XConnectService(IExmContactService exmContactService, IXConnectContactRepository xConnectContactRepository)
+        public XConnectContactService(IExmContactService exmContactService, IXConnectContactRepository xConnectContactRepository)
         {
             Condition.Requires(exmContactService, nameof(exmContactService)).IsNotNull();
             Condition.Requires(xConnectContactRepository, nameof(xConnectContactRepository)).IsNotNull();

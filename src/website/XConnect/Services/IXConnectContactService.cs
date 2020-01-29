@@ -4,7 +4,7 @@ using Sitecore.XConnect;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services
 {
-    public interface IXConnectService
+    public interface IXConnectContactService
     {
         void CheckIdentifier(IXConnectContact contact);
 

@@ -22,13 +22,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
     [Serializable]
     public class MarketingPreferencesViewModel : CheckBoxListViewModel
     {
-        private readonly IXConnectService _xConnectService;
+        private readonly IXConnectContactService _xConnectContactService;
         private readonly IManagerRootService _managerRootService;
         private readonly IMarketingPreferencesService _marketingPreferencesService;
         private readonly ILogger _logger;
 
         public MarketingPreferencesViewModel() : this(
-            ServiceLocator.ServiceProvider.GetService<IXConnectService>(),
+            ServiceLocator.ServiceProvider.GetService<IXConnectContactService>(),
             ServiceLocator.ServiceProvider.GetService<IManagerRootService>(),
             ServiceLocator.ServiceProvider.GetService<IMarketingPreferencesService>(),
             ServiceLocator.ServiceProvider.GetService<ILogger>())
@@ -36,16 +36,16 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
         }
 
         public MarketingPreferencesViewModel(
-            IXConnectService xConnectService,
+            IXConnectContactService xConnectContactService,
             IManagerRootService managerRootService,
             IMarketingPreferencesService marketingPreferencesService,
             ILogger logger)
         {
-            Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
+            Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             Condition.Requires(managerRootService, nameof(managerRootService)).IsNotNull();
             Condition.Requires(marketingPreferencesService, nameof(marketingPreferencesService)).IsNotNull();
             Condition.Requires(logger, nameof(logger)).IsNotNull();
-            _xConnectService = xConnectService;
+            _xConnectContactService = xConnectContactService;
             _managerRootService = managerRootService;
             _marketingPreferencesService = marketingPreferencesService;
             _logger = logger;
@@ -117,7 +117,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
                 return marketingPreferences;
             }
 
-            var knownContact = _xConnectService.GetXConnectContactByEmailAddress();
+            var knownContact = _xConnectContactService.GetXConnectContactByEmailAddress();
             if (knownContact != null)
             {
                 marketingPreferences = _marketingPreferencesService.GetPreferences(knownContact, managerRoot.Id);

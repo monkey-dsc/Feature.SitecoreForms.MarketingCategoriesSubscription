@@ -26,13 +26,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 {
     public class SaveMarketingPreferencesService<T> : ISaveMarketingPreferencesService<T> where T : SaveMarketingPreferencesData
     {
-        private readonly IXConnectService _xConnectService;
+        private readonly IXConnectContactService _xConnectContactService;
         private readonly IExmContactService _exmContactService;
         private readonly IManagerRootService _managerRootService;
         private readonly ListManagerWrapper _listManagerWrapper;
 
         public SaveMarketingPreferencesService() : this(
-            ServiceLocator.ServiceProvider.GetService<IXConnectService>(),
+            ServiceLocator.ServiceProvider.GetService<IXConnectContactService>(),
             ServiceLocator.ServiceProvider.GetService<IExmContactService>(),
             ServiceLocator.ServiceProvider.GetService<IManagerRootService>(),
             ServiceLocator.ServiceProvider.GetService<ListManagerWrapper>())
@@ -40,16 +40,16 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         }
 
         public SaveMarketingPreferencesService(
-            IXConnectService xConnectService,
+            IXConnectContactService xConnectContactService,
             IExmContactService exmContactService,
             IManagerRootService managerRootService,
             ListManagerWrapper listManagerWrapper)
         {
-            Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
+            Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             Condition.Requires(exmContactService, nameof(exmContactService)).IsNotNull();
             Condition.Requires(managerRootService, nameof(managerRootService)).IsNotNull();
             Condition.Requires(listManagerWrapper, nameof(listManagerWrapper)).IsNotNull();
-            _xConnectService = xConnectService;
+            _xConnectContactService = xConnectContactService;
             _exmContactService = exmContactService;
             _managerRootService = managerRootService;
             _listManagerWrapper = listManagerWrapper;
@@ -74,7 +74,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 
             var newPersonalInformation = new PersonalInformation { FirstName = firstName, LastName = lastName };
 
-            _xConnectService.UpdateContactFacet(
+            _xConnectContactService.UpdateContactFacet(
                 contactIdentifier,
                 PersonalInformation.DefaultFacetKey,
                 x =>
@@ -93,7 +93,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 
         public void ResetExmKeyBehaviorCache(ContactIdentifier contactIdentifier)
         {
-            _xConnectService.UpdateContactFacet<ExmKeyBehaviorCache>(contactIdentifier, ExmKeyBehaviorCache.DefaultFacetKey, x => x.MarketingPreferences = new List<MarketingPreference>());
+            _xConnectContactService.UpdateContactFacet<ExmKeyBehaviorCache>(contactIdentifier, ExmKeyBehaviorCache.DefaultFacetKey, x => x.MarketingPreferences = new List<MarketingPreference>());
         }
 
         public MarketingPreferencesViewModel GetMarketingPreferencesViewModel(IEnumerable<IViewModel> fields)

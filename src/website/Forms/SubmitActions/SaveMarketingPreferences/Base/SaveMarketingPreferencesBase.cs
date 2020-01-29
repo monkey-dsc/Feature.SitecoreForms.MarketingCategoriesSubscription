@@ -28,7 +28,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
     public abstract class SaveMarketingPreferencesBase<T> : SubmitActionBase<T> where T : SaveMarketingPreferencesData
     {
         protected new readonly ILogger Logger;
-        private readonly IXConnectService _xConnectService;
+        private readonly IXConnectContactService _xConnectContactService;
         private readonly IXConnectContactFactory _xConnectContactFactory;
         private readonly ISaveMarketingPreferencesService<T> _saveMarketingPreferencesService;
         private readonly IMarketingPreferencesService _marketingPreferenceService;
@@ -38,21 +38,21 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         protected SaveMarketingPreferencesBase(
             ISubmitActionData submitActionData,
             ILogger logger,
-            IXConnectService xConnectService,
+            IXConnectContactService xConnectContactService,
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<T> saveMarketingPreferencesService,
             IMarketingPreferencesService marketingPreferenceService,
             IExmSubscriptionManager exmSubscriptionManager) : base(submitActionData)
         {
             Condition.Requires(logger, nameof(logger)).IsNotNull();
-            Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
+            Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             Condition.Requires(xConnectContactFactory, nameof(xConnectContactFactory)).IsNotNull();
             Condition.Requires(saveMarketingPreferencesService, nameof(saveMarketingPreferencesService)).IsNotNull();
             Condition.Requires(marketingPreferenceService, nameof(marketingPreferenceService)).IsNotNull();
             Condition.Requires(exmSubscriptionManager, nameof(exmSubscriptionManager)).IsNotNull();
 
             Logger = logger;
-            _xConnectService = xConnectService;
+            _xConnectContactService = xConnectContactService;
             _xConnectContactFactory = xConnectContactFactory;
             _saveMarketingPreferencesService = saveMarketingPreferencesService;
             _marketingPreferenceService = marketingPreferenceService;
@@ -99,10 +99,10 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 
             var customXConnectContact = _xConnectContactFactory.CreateContactWithEmail(contactIdentifier.Identifier);
 
-            _xConnectService.IdentifyCurrent(customXConnectContact);
-            _xConnectService.UpdateOrCreateContact(customXConnectContact);
+            _xConnectContactService.IdentifyCurrent(customXConnectContact);
+            _xConnectContactService.UpdateOrCreateContact(customXConnectContact);
 
-            var contact = _xConnectService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+            var contact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
             if (contact == null)
             {
                 throw new ContactException();

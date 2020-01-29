@@ -12,16 +12,16 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
     [Serializable]
     public class IsKnownContactViewModel : InputViewModel<string>
     {
-        private readonly IXConnectService _xConnectService;
+        private readonly IXConnectContactService _xConnectContactService;
 
-        public IsKnownContactViewModel() : this(ServiceLocator.ServiceProvider.GetService<IXConnectService>())
+        public IsKnownContactViewModel() : this(ServiceLocator.ServiceProvider.GetService<IXConnectContactService>())
         {
         }
 
-        public IsKnownContactViewModel(IXConnectService xConnectService)
+        public IsKnownContactViewModel(IXConnectContactService xConnectContactService)
         {
-            Condition.Requires(xConnectService, nameof(xConnectService)).IsNotNull();
-            _xConnectService = xConnectService;
+            Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
+            _xConnectContactService = xConnectContactService;
         }
 
         protected override void InitializeValue(object value)
@@ -50,7 +50,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
                 return false;
             }
 
-            return _xConnectService.GetXConnectContactByEmailAddress() != null;
+            return _xConnectContactService.GetXConnectContactByEmailAddress() != null;
         }
     }
 }
