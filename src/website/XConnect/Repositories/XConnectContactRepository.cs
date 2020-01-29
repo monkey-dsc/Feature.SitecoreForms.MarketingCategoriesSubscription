@@ -85,7 +85,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Reposit
             }
         }
 
-        private void SaveNewContactToCollectionDb(Contact contact)
+        private static void SaveNewContactToCollectionDb(Contact contact)
         {
             if (!(CreateContactManager() is ContactManager manager))
             {
