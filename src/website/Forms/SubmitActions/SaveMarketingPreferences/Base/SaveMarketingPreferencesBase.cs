@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.Exceptions;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Data;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Services;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Factories;
@@ -20,6 +21,7 @@ using Sitecore.Framework.Conditions;
 using Sitecore.ListManagement;
 using Sitecore.Marketing.Definitions.ContactLists;
 using Sitecore.Modules.EmailCampaign;
+using Sitecore.Modules.EmailCampaign.ListManager;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
@@ -33,6 +35,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         private readonly ISaveMarketingPreferencesService<T> _saveMarketingPreferencesService;
         private readonly IMarketingPreferencesService _marketingPreferenceService;
         private readonly IExmSubscriptionManager _exmSubscriptionManager;
+        private readonly ListManagerWrapper _listManagerWrapper;
         private readonly bool _useDoubleOptIn = Settings.GetBoolSetting("NewsletterSubscription.UseDoubleOptInForSubscription", true); // GDPR, sorry for the default value!
 
         protected SaveMarketingPreferencesBase(
@@ -42,13 +45,15 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<T> saveMarketingPreferencesService,
             IMarketingPreferencesService marketingPreferenceService,
-            IExmSubscriptionManager exmSubscriptionManager) : base(submitActionData)
+            IExmSubscriptionManager exmSubscriptionManager,
+            ListManagerWrapper listManagerWrapper) : base(submitActionData)
         {
             Condition.Requires(logger, nameof(logger)).IsNotNull();
             Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             Condition.Requires(xConnectContactFactory, nameof(xConnectContactFactory)).IsNotNull();
             Condition.Requires(saveMarketingPreferencesService, nameof(saveMarketingPreferencesService)).IsNotNull();
             Condition.Requires(marketingPreferenceService, nameof(marketingPreferenceService)).IsNotNull();
+            Condition.Requires(exmSubscriptionManager, nameof(exmSubscriptionManager)).IsNotNull();
             Condition.Requires(exmSubscriptionManager, nameof(exmSubscriptionManager)).IsNotNull();
 
             Logger = logger;
@@ -57,6 +62,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             _saveMarketingPreferencesService = saveMarketingPreferencesService;
             _marketingPreferenceService = marketingPreferenceService;
             _exmSubscriptionManager = exmSubscriptionManager;
+            _listManagerWrapper = listManagerWrapper;
         }
 
         protected override bool Execute(T data, FormSubmitContext formSubmitContext)
@@ -97,20 +103,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 throw new ContactIdentifierException();
             }
 
-            var customXConnectContact = _xConnectContactFactory.CreateContactWithEmail(contactIdentifier.Identifier);
-
-            _xConnectContactService.IdentifyCurrent(customXConnectContact);
-            _xConnectContactService.UpdateOrCreateContact(customXConnectContact);
-
-            var contact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
-            if (contact == null)
-            {
-                throw new ContactException();
-            }
-
-            _saveMarketingPreferencesService.SetPersonalInformation(data, fields, contact, contactIdentifier);
-            _saveMarketingPreferencesService.SetExmKeyBehaviorCache(contact);
-
             var marketingPreferencesViewModel = _saveMarketingPreferencesService.GetMarketingPreferencesViewModel(fields);
             if (marketingPreferencesViewModel == null)
             {
@@ -123,16 +115,47 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 throw new ManagerRootException();
             }
 
-            var contactList = _saveMarketingPreferencesService.GetAndValidateContactList(marketingPreferencesViewModel, _useDoubleOptIn);
-            var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
-
-            if (marketingPreferences.All(x => x.Preference == false))
+            var contact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+            if (contact != null)
             {
-                UnsubscribeFromAll(contact, contactIdentifier, managerRoot, contactList.ContactListDefinition.Id);
+                var globalList = _listManagerWrapper.FindById(new Guid(marketingPreferencesViewModel.ContactListId));
+                if (globalList != null)
+                {
+                    var contacts = _listManagerWrapper.GetContacts(globalList);
+                    if (contacts.Any(x => x.Identifiers
+                                           .Where(i => i.IdentifierType == ContactIdentifierType.Known)
+                                           .Any(y => y.Identifier == contactIdentifier.Identifier)))
+                    {
+                        var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
+                        _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
+                        return;
+                    }
+                }
+            }
+
+            var customXConnectContact = _xConnectContactFactory.CreateContactWithEmail(contactIdentifier.Identifier);
+            _xConnectContactService.IdentifyCurrent(customXConnectContact);
+            _xConnectContactService.UpdateOrCreateContact(customXConnectContact);
+
+            var newContact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+            if (newContact == null)
+            {
+                throw new ContactException();
+            }
+
+            _saveMarketingPreferencesService.SetPersonalInformation(data, fields, newContact, contactIdentifier);
+            _saveMarketingPreferencesService.SetExmKeyBehaviorCache(newContact);
+
+            var contactList = _saveMarketingPreferencesService.GetAndValidateContactList(marketingPreferencesViewModel, _useDoubleOptIn);
+            var newMarketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, newContact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
+
+            if (newMarketingPreferences.All(x => x.Preference == false))
+            {
+                UnsubscribeFromAll(newContact, contactIdentifier, managerRoot, contactList.ContactListDefinition.Id);
                 return;
             }
 
-            SubscribeContact(managerRoot, contactList, contact, marketingPreferences);
+            SubscribeContact(managerRoot, contactList, newContact, newMarketingPreferences);
         }
 
         private void UnsubscribeFromAll(Contact contact, ContactIdentifier contactIdentifier, ManagerRoot managerRoot, Guid listId)

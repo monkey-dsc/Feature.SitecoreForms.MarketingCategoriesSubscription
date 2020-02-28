@@ -14,6 +14,7 @@ using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.ExperienceForms.Models;
 using Sitecore.ExperienceForms.Mvc.Models.Fields;
 using Sitecore.Framework.Conditions;
+using Sitecore.Modules.EmailCampaign.ListManager;
 using Sitecore.XConnect;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences
@@ -31,7 +32,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             ServiceLocator.ServiceProvider.GetService<IXConnectContactFactory>(),
             ServiceLocator.ServiceProvider.GetService<ISaveMarketingPreferencesService<SaveMarketingPreferencesData>>(),
             ServiceLocator.ServiceProvider.GetService<IMarketingPreferencesService>(),
-            ServiceLocator.ServiceProvider.GetService<IExmSubscriptionManager>())
+            ServiceLocator.ServiceProvider.GetService<IExmSubscriptionManager>(),
+            ServiceLocator.ServiceProvider.GetService<ListManagerWrapper>())
         {
         }
 
@@ -42,7 +44,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<SaveMarketingPreferencesData> saveMarketingPreferencesService,
             IMarketingPreferencesService marketingPreferencesService,
-            IExmSubscriptionManager exmSubscriptionManager) : base(submitActionData, logger, xConnectContactService, xConnectContactFactory, saveMarketingPreferencesService, marketingPreferencesService, exmSubscriptionManager)
+            IExmSubscriptionManager exmSubscriptionManager,
+            ListManagerWrapper listManagerWrapper) : base(submitActionData, logger, xConnectContactService, xConnectContactFactory, saveMarketingPreferencesService, marketingPreferencesService, exmSubscriptionManager, listManagerWrapper)
         {
             Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             _xConnectContactService = xConnectContactService;

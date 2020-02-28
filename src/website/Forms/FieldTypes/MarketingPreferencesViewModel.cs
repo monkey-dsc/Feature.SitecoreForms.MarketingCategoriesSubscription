@@ -73,6 +73,14 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
         private void RenderListItems(Item item, string selectedManagerRootId)
         {
             var database = Context.ContentDatabase ?? Context.Database;
+            Guid guidOutput;
+            bool isValid = Guid.TryParse(selectedManagerRootId, out guidOutput);
+            if(!isValid)
+            {
+                _logger.LogError("No Valid Manager Root!");
+                return;
+            }
+
             var managerRoot = _managerRootService.GetManagerRoot(new Guid(selectedManagerRootId));
 
             if (managerRoot == null)
