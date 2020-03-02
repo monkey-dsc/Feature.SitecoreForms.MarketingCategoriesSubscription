@@ -12,6 +12,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 {
     public interface ISaveMarketingPreferencesService<in T> where T : SaveMarketingPreferencesData
     {
+        bool AuthenticateContact(Contact contact);
         void SetPersonalInformation(T data, IList<IViewModel> fields, Entity contact, ContactIdentifier contactIdentifier);
         void SetExmKeyBehaviorCache(Contact contact);
         void ResetExmKeyBehaviorCache(ContactIdentifier contactIdentifier);

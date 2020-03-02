@@ -5,10 +5,10 @@
 
 @if (Html.Sitecore().IsExperienceFormsEditMode())
 {
-    <div class="form-group">
-        <p class="form-control">
-            Is known contact: @Model.Name
-        </p>
+    <div>
+        <div class="form-control">
+            Is known contact field: "@Model.Name" -> Evaluates if a contact is already known.
+        </div>
     </div>
 }
 else

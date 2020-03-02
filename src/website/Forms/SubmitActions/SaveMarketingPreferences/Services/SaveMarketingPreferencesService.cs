@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Constants;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.Exceptions;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes;
@@ -8,6 +9,7 @@ using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore;
+using Sitecore.Analytics;
 using Sitecore.Data;
 using Sitecore.DependencyInjection;
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
@@ -53,6 +55,19 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             _exmContactService = exmContactService;
             _managerRootService = managerRootService;
             _listManagerWrapper = listManagerWrapper;
+        }
+
+        public bool AuthenticateContact(Contact contact)
+        {
+            if (Tracker.Current == null || Tracker.Current.Contact == null || Tracker.Current.Contact.IsNew)
+            {
+                return false;
+            }
+
+            var contactXdbTrackerIdentifier = contact.Identifiers.FirstOrDefault(x => x.Source == ContactIdentifiers.XdbTracker);
+            var trackerXdbTrackerIdentifier = Tracker.Current.Contact.Identifiers.FirstOrDefault(x => x.Source == ContactIdentifiers.XdbTracker);
+
+            return contactXdbTrackerIdentifier != null && trackerXdbTrackerIdentifier != null && contactXdbTrackerIdentifier.Identifier == trackerXdbTrackerIdentifier.Identifier;
         }
 
         public void SetPersonalInformation(T data, IList<IViewModel> fields, Entity contact, ContactIdentifier contactIdentifier)

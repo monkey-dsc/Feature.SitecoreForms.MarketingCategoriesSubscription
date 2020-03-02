@@ -23,6 +23,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
         private const double Delay = 100;
         private const int RetryCount = 3;
 
+        // ReSharper disable once UnusedMember.Global
         public XConnectContactService() : this(
             ServiceLocator.ServiceProvider.GetService<IExmContactService>(),
             ServiceLocator.ServiceProvider.GetService<IXConnectContactRepository>())
@@ -66,7 +67,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Service
                 return emailIdentifier;
             }
 
-            var xConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+            var xConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>(FacetKeys.XConnectFacets);
             if (xConnectFacets?.Facets == null)
             {
                 return null;

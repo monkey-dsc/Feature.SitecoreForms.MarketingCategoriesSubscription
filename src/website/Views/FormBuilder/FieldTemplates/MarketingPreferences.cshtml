@@ -1,21 +1,34 @@
 ﻿@using System.Web.Mvc.Html
+@using Feature.SitecoreForms.MarketingCategoriesSubscription.Helper
 @using Sitecore.ExperienceForms.Mvc.Html
+@using Sitecore.Mvc
 @model Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes.MarketingPreferencesViewModel
 @{
     var requiredMarker = Model.Required ? "*" : string.Empty;
 }
 
-<label class="@Model.LabelCssClass">@Html.DisplayTextFor(t => Model.Title) @requiredMarker</label>
-<div class="@Model.CssClass">
-    <input type="hidden" name="@Html.NameFor(m => Model.Value)" />
-    @Html.HiddenFor(x => x.ManagerRootId) 
-    @Html.HiddenFor(x => x.ContactListId)
-    @foreach (var item in Model.Items)
-    {
-        <div class="checkbox">
-            <input type="checkbox" id="@item.ItemId" name="@Html.NameFor(m => Model.Value)" @if (item.Selected) { <text> checked</text>} value="@item.Value" data-sc-tracking="@Model.IsTrackingEnabled" data-sc-field-name="@Model.Name" data-sc-field-key="@Model.ConditionSettings.FieldKey" @Html.GenerateUnobtrusiveValidationAttributes(m => Model.Value) />
-            <label class="c-input c-checkbox" for="@item.ItemId">@item.Text</label>
+@if (Html.Sitecore().IsExperienceFormsEditMode())
+{
+    <div style="border: 2px solid #aadbee">
+        <div class="form-control">
+            Please choose a valid manager root for field "@Model.Name"
         </div>
-    }
-    @Html.ValidationMessageFor(m => Model.Value)
-</div>
+    </div>
+}
+else
+{
+    <label class="@Model.LabelCssClass">@Html.DisplayTextFor(t => Model.Title) @requiredMarker</label>
+    <div class="@Model.CssClass">
+        <input type="hidden" name="@Html.NameFor(m => Model.Value)" />
+        @Html.HiddenFor(x => x.ManagerRootId)
+        @Html.HiddenFor(x => x.ContactListId)
+        @foreach (var item in Model.Items)
+        {
+            <div class="checkbox">
+                <input type="checkbox" id="@item.ItemId" name="@Html.NameFor(m => Model.Value)" @if (item.Selected) { <text> checked</text>} value="@item.Value" data-sc-tracking="@Model.IsTrackingEnabled" data-sc-field-name="@Model.Name" data-sc-field-key="@Model.ConditionSettings.FieldKey" @Html.GenerateUnobtrusiveValidationAttributes(m => Model.Value) />
+                <label class="c-input c-checkbox" for="@item.ItemId">@item.Text</label>
+            </div>
+        }
+        @Html.ValidationMessageFor(m => Model.Value)
+    </div>
+}

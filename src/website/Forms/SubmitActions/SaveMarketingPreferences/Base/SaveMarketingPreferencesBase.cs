@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.Exceptions;
-using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Data;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Services;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Factories;
@@ -126,11 +125,14 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                                            .Where(i => i.IdentifierType == ContactIdentifierType.Known)
                                            .Any(y => y.Identifier == contactIdentifier.Identifier)))
                     {
-                        var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
-                        _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
-                        //To send notification, it will not subscribe contact again 
-                        _exmSubscriptionManager.Subscribe(contact, new Guid(marketingPreferencesViewModel.ContactListId), managerRoot, false);
-                        return;
+                        if (_saveMarketingPreferencesService.AuthenticateContact(contact))
+                        {
+                            var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
+                            _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
+                            return;
+                        }
+
+                        throw new ContactIdentifierException();
                     }
                 }
             }

@@ -73,9 +73,9 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
         private void RenderListItems(Item item, string selectedManagerRootId)
         {
             var database = Context.ContentDatabase ?? Context.Database;
-            Guid guidOutput;
-            bool isValid = Guid.TryParse(selectedManagerRootId, out guidOutput);
-            if(!isValid)
+            // ReSharper disable once UnusedVariable
+            var isValid = Guid.TryParse(selectedManagerRootId, out var guidOutput);
+            if (!isValid)
             {
                 _logger.LogError("No Valid Manager Root!");
                 return;
@@ -139,6 +139,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
             return contactMarketingPreferences != null && contactMarketingPreferences.Any(contactMarketingPreference => contactMarketingPreference.MarketingCategoryId == marketingCategory.ID.Guid && contactMarketingPreference.Preference == true);
         }
 
+        // ToDo: Remove unused method
         private static void StartTracker()
         {
             if (Tracker.Current == null && Tracker.Enabled)
