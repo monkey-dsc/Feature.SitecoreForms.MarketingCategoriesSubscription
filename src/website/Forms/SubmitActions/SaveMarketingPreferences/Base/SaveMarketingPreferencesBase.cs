@@ -128,6 +128,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                     {
                         var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
                         _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
+                        //To send notification, it will not subscribe contact again 
+                        _exmSubscriptionManager.Subscribe(contact, new Guid(marketingPreferencesViewModel.ContactListId), managerRoot, false);
                         return;
                     }
                 }
