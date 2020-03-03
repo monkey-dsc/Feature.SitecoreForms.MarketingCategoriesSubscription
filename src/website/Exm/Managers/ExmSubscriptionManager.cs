@@ -3,51 +3,42 @@ using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 using Sitecore.Diagnostics;
 using Sitecore.EmailCampaign.Cm;
-using Sitecore.EmailCampaign.Cm.Factories;
 using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.Framework.Conditions;
 using Sitecore.Marketing.Core.Extensions;
 using Sitecore.Modules.EmailCampaign;
-using Sitecore.Modules.EmailCampaign.Core;
 using Sitecore.Modules.EmailCampaign.Core.Contacts;
-using Sitecore.Modules.EmailCampaign.Factories;
 using Sitecore.Modules.EmailCampaign.ListManager;
-using Sitecore.Modules.EmailCampaign.Services;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Schema;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers
 {
-    internal sealed class ExmSubscriptionManager : SubscriptionManager, IExmSubscriptionManager
+    internal sealed class ExmSubscriptionManager : IExmSubscriptionManager
     {
         private readonly ILogger _logger;
         private readonly ListManagerWrapper _listManagerWrapper;
+        private readonly SubscriptionManager _subscriptionManager;
 
         public ExmSubscriptionManager() : this(
-            ServiceLocator.ServiceProvider.GetService<IContactService>(),
+            ServiceLocator.ServiceProvider.GetService<ISubscriptionManager>(),
             ServiceLocator.ServiceProvider.GetService<ILogger>(),
-            ServiceLocator.ServiceProvider.GetService<ListManagerWrapper>(),
-            ServiceLocator.ServiceProvider.GetService<IExmCampaignService>(),
-            ServiceLocator.ServiceProvider.GetService<PipelineHelper>(),
-            ServiceLocator.ServiceProvider.GetService<ISendingManagerFactory>(),
-            ServiceLocator.ServiceProvider.GetService<IManagerRootService>(),
-            ServiceLocator.ServiceProvider.GetService<IRecipientManagerFactory>())
+            ServiceLocator.ServiceProvider.GetService<ListManagerWrapper>())
         {
             
         }
 
         public ExmSubscriptionManager(
-            IContactService contactService,
+            ISubscriptionManager subscriptionManager,
             ILogger logger,
-            ListManagerWrapper listManagerWrapper,
-            IExmCampaignService exmCampaignService,
-            PipelineHelper pipelineHelper,
-            ISendingManagerFactory sendingManagerFactory,
-            IManagerRootService managerRootService,
-            IRecipientManagerFactory recipientManagerFactory) : base(contactService, logger, listManagerWrapper, exmCampaignService, pipelineHelper, sendingManagerFactory, managerRootService, recipientManagerFactory)
+            ListManagerWrapper listManagerWrapper)
         {
+            Condition.Requires(subscriptionManager, nameof(subscriptionManager)).IsNotNull();
+            Condition.Requires(subscriptionManager is SubscriptionManager);
             Condition.Requires(logger, nameof(logger)).IsNotNull();
             Condition.Requires(listManagerWrapper, nameof(listManagerWrapper)).IsNotNull();
+
+            _subscriptionManager = (SubscriptionManager)subscriptionManager;
             _logger = logger;
             _listManagerWrapper = listManagerWrapper;
         }
@@ -67,31 +58,31 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers
                 return false;
             }
 
-            var flag1 = _listManagerWrapper.IsSubscribed(recipientListId, contact);
-            if (flag1 && !managerRoot.GlobalSubscription.IsInDefaultExcludeCollection(contact))
+            var isSubscribed = _listManagerWrapper.IsSubscribed(recipientListId, contact);
+            if (isSubscribed && !managerRoot.GlobalSubscription.IsInDefaultExcludeCollection(contact))
             {
                 return true;
             }
 
             if (subscriptionConfirmation)
             {
-                return SendConfirmationMessage(contact, recipientListId, managerRoot);
+                return _subscriptionManager.SendConfirmationMessage(contact, recipientListId, managerRoot);
             }
 
             var flag2 = true;
-            if (!flag1)
+            if (!isSubscribed)
             {
                 flag2 = _listManagerWrapper.SubscribeContact(recipientListId, contact);
             }
 
-            if (!SendSubscriptionNotification(managerRoot, contact))
+            if (!_subscriptionManager.SendSubscriptionNotification(managerRoot, contact))
             {
                 var alias = contact.GetAlias();
                 var message = $"Failed to send subscription notification to {alias?.ToLogFile()}";
                 _logger.LogError(message);
             }
 
-            if (managerRoot.GlobalSubscription.IsInDefaultExcludeCollection(contact) && !RemoveContactFromList(contact, managerRoot.GlobalSubscription.GetGlobalOptOutListId()))
+            if (managerRoot.GlobalSubscription.IsInDefaultExcludeCollection(contact) && !_subscriptionManager.RemoveContactFromList(contact, managerRoot.GlobalSubscription.GetGlobalOptOutListId()))
             {
                 var alias = contact.GetAlias();
                 var message = $"Failed to remove {alias?.ToLogFile()} from global opt out list";
@@ -99,6 +90,11 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers
             }
 
             return flag2;
+        }
+
+        public void UnsubscribeFromAll(Contact contact, ManagerRoot managerRoot)
+        {
+            _subscriptionManager.UnsubscribeFromAll(contact, managerRoot);
         }
     }
 }
