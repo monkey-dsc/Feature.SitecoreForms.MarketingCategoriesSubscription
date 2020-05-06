@@ -81,11 +81,6 @@
     <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Components\Layouts\PropertyGridForm\PageSettings\Settings\Marketing Preferences\Exm Options\Manager Root Id.item"><ChildItemSynchronization>KeepAllChildrenSynchronized</ChildItemSynchronization><ItemDeployment>DeployOnce</ItemDeployment></SitecoreItem>
     <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Components\Layouts\PropertyGridForm\PageSettings\Settings\Marketing Preferences\Styling.item"><ChildItemSynchronization>KeepAllChildrenSynchronized</ChildItemSynchronization><ItemDeployment>DeployOnce</ItemDeployment></SitecoreItem>
     <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Components\Layouts\PropertyGridForm\PageSettings\Settings\Marketing Preferences\Validation.item"><ChildItemSynchronization>KeepAllChildrenSynchronized</ChildItemSynchronization><ItemDeployment>DeployOnce</ItemDeployment></SitecoreItem>
-    <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Pages.item"><ItemDeployment>DeployOnce</ItemDeployment><ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization></SitecoreItem>
-    <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Pages\FormDesigner.item"><ItemDeployment>DeployOnce</ItemDeployment><ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization></SitecoreItem>
-    <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Pages\FormDesigner\PageSettings.item"><ItemDeployment>DeployOnce</ItemDeployment><ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization></SitecoreItem>
-    <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Pages\FormDesigner\PageSettings\InfoTabControl.item"><ItemDeployment>DeployOnce</ItemDeployment><ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization></SitecoreItem>
-    <SitecoreItem Include="sitecore\client\Applications\FormsBuilder\Pages\FormDesigner\PageSettings\InfoTabControl\Design.item"><ItemDeployment>DeployOnce</ItemDeployment></SitecoreItem>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
 </Project>
