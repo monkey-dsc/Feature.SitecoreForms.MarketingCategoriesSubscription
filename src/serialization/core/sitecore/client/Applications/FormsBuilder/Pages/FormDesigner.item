@@ -1,0 +1,200 @@
+----item----
+version: 1
+id: {6F71C51B-B8BB-4E61-BEAC-56FAD8E1584D}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Pages/FormDesigner
+parent: {816CC5CB-E0B9-4A5C-BD2D-55DDB0AF8F31}
+name: FormDesigner
+master: {D3D6E05F-300A-41F4-A566-F0249575758D}
+template: {C63C943A-CB4D-45D6-880C-208BD29DAE1A}
+templatekey: Speak-TaskPage
+created: 20190510T091725Z
+
+----field----
+field: {F6D8A61C-2F84-4401-BD24-52D2068172BC}
+name: __Originator
+key: __originator
+content-length: 38
+
+{403565C0-21D7-4051-AEE7-6E223E3EE33B}
+----field----
+field: {F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}
+name: __Renderings
+key: __renderings
+content-length: 9884
+
+<r>
+  <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{5A7CF08C-3647-4F56-B189-9E8C0531FBAF}">
+    <r id="{DAFAFFB8-74AF-4141-A96A-70B16834CEC6}" par="SpeakCoreVersion=%7b3F937240-C16E-4229-9641-4CE5B4CB4ABA%7d" ph="Page.Code" uid="{562A3D5B-BCCE-45A0-B5DA-20539192057F}" />
+    <r id="{6DD48808-604F-453D-9075-C96F238F6600}" ph="Page.Body" uid="{79994703-248D-45FF-951A-2AA76B14DDD6}" />
+    <r id="{06632524-7DD3-4E1A-84BF-2A5DF970263C}" par="Id=UnsavedChangesConfirmationDialog" ph="Page.Body" uid="{4FE71BCC-5683-4CAB-88EE-A4E42A4DF600}" />
+    <r id="{06632524-7DD3-4E1A-84BF-2A5DF970263C}" par="Id=UnappliedFieldChangesConfirmationDialog" ph="Page.Body" uid="{3A553185-1D93-4EC6-9B3E-2DD7FD626188}" />
+    <r id="{06632524-7DD3-4E1A-84BF-2A5DF970263C}" par="Id=DeleteConfirmationDialog" ph="Page.Body" uid="{5B79A36E-EB48-435C-AE0A-913C09075F0C}" />
+    <r id="{06632524-7DD3-4E1A-84BF-2A5DF970263C}" par="Id=RemoveVersionConfirmationDialog" ph="Page.Body" uid="{B47BA8F7-A5F9-47E5-BB4D-C521319BC3CB}" />
+    <r id="{DE943A70-61A4-4D27-A166-C79A5BC9683A}" par="ConfigurationItem=%7b64CB6F04-339D-43AA-8BC4-DC870784B1ED%7d&amp;Id=SaveFormSubAppRenderer" ph="Page.Body" uid="{7128EA94-1EF5-4DA0-A0D8-A1C2A7FF2901}" />
+    <r id="{A7B206E7-7393-4125-962C-02EEFA4734CF}" par="Id=SelectMediaDialogWindow" ph="Page.Body" uid="{5E2F9444-225C-473A-ACD2-65A48C2AC029}" />
+    <r id="{90F4E9F6-B3C3-4A76-A7E8-FCCF6E68EC2D}" par="Id=SelectMediaDialogFrame&amp;Height=100%25" ph="SelectMediaDialogWindow.Content" uid="{44BFAD5E-D67A-4EE5-B0DC-8429C12A140F}" />
+    <r id="{DE943A70-61A4-4D27-A166-C79A5BC9683A}" par="ConfigurationItem=%7b80E35AB2-BC98-4742-A09C-885886D56298%7d&amp;Id=SelectDatasourceSubAppRenderer" ph="Page.Body" uid="{FA614B69-3D50-495C-B29B-195801081099}" />
+    <r id="{DE943A70-61A4-4D27-A166-C79A5BC9683A}" par="ConfigurationItem=%7b94C096BD-CDD6-4AE2-B940-EBB7D0650901%7d&amp;Id=CreateGoalSubAppRenderer" ph="Page.Body" uid="{731A0E6D-A517-4F99-98E3-90002F5DCB10}" />
+    <r id="{DE943A70-61A4-4D27-A166-C79A5BC9683A}" par="ConfigurationItem=%7bB33D7440-592A-43D8-9AC3-4B2122B5C22D%7d&amp;Id=EditActionSubAppRenderer" ph="Page.Body" uid="{EC597ADB-8387-41AE-8201-534BE3A6554B}" />
+    <r id="{DE943A70-61A4-4D27-A166-C79A5BC9683A}" par="ConfigurationItem=%7bB0421685-0261-4597-970A-B5F8E6E46900%7d&amp;Id=EditConditionsSubAppRenderer" ph="Page.Body" uid="{2E416272-5B28-4D3A-9842-76DD927749DC}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=Template&amp;IsVisible=0" ph="Page.Body" uid="{8113AF40-CDCD-4395-AC45-F959272C530B}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=UnsavedChangesMessage&amp;IsVisible=0" ph="Page.Body" uid="{B38FCBF2-4337-44DD-AE2C-2CB13F5B8954}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=SaveExistingSuccessMessage&amp;IsVisible=0" ph="Page.Body" uid="{D5198AAD-AAE7-416A-94E6-C82BECADAF45}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=SaveAsFormSuccessMessage&amp;IsVisible=0" ph="Page.Body" uid="{2E329CE5-89E7-4878-9686-B3244FBEAB00}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=UpdateReportErrorMessage&amp;IsVisible=0" ph="Page.Body" uid="{9CDDC9BD-813F-4F65-9ADA-40497F58926A}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=LoadFormErrorMessage&amp;IsVisible=0" ph="Page.Body" uid="{9FE2F0CB-FE96-400F-B9C8-E02368B17935}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=RenderFieldErrorMessage&amp;IsVisible=0" ph="Page.Body" uid="{46888138-2F22-40A3-A705-74E507237780}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=ReloadFieldErrorMessage&amp;IsVisible=0" ph="Page.Body" uid="{AA58070A-5BC8-445D-8936-1F33194B7033}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=SaveAsTemplateSuccessMessage&amp;IsVisible=0" ph="Page.Body" uid="{7EDA6FCA-BF59-440B-9D20-6B984424D439}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=SaveAsTemplate&amp;IsVisible=0" ph="Page.Body" uid="{3F313FC3-CC30-4F2F-A590-67C7735C3BE7}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=SaveAsForm&amp;IsVisible=0" ph="Page.Body" uid="{5FB3D41F-0421-4551-A851-51721B7DE4C3}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=RemoveVersionErrorMessage&amp;IsVisible=0" ph="Page.Body" uid="{B6990476-66A6-49AB-AEDF-EF395E5F4B2F}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=RemoveVersionSuccessMessage&amp;IsVisible=0" ph="Page.Body" uid="{91AB6249-8786-4242-8163-189942CA3669}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=RemoveVersionNoOtherVersionMessage&amp;IsVisible=0" ph="Page.Body" uid="{F812FC57-1F82-449B-BDD2-7E3181FF2E90}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=RemoveVersionNoAccessMessage&amp;IsVisible=0" ph="Page.Body" uid="{3324CD2E-01CF-4798-B8CC-FB67CF38E9BE}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=NewFormName&amp;IsVisible=0" ph="Page.Body" uid="{ADB5DF42-832C-4036-9E51-EC5DCFC6D147}" />
+    <r id="{78D8260C-4FF9-4627-BF64-0B884ACA4BA1}" ph="GlobalHeader" uid="{52FFDF51-36A7-4125-AA3E-9C1658EBABFA}" />
+    <r id="{C220369A-84A3-482B-A936-F75CDCB23736}" par="Id=GlobalLogo" ph="GlobalHeader.StartButton" uid="{6E966051-974A-4A62-BEB4-23D95C82A998}" />
+    <r id="{0DD00367-0B7D-4955-BB70-397523711B6D}" par="Id=AccountInformation" ph="GlobalHeader.LoginInfo" uid="{CE8D5A1C-ED9D-427B-8ED7-176B97F59851}" />
+    <r id="{047F31EF-7D7D-42E5-BC9B-F39FEAB0B83B}" ph="ApplicationHeader" uid="{FCF3A9D2-8239-4BD7-8F87-A49F228B968D}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Id=HeaderTitle" ph="ApplicationHeader.Title" uid="{4927479B-0A36-4CF2-B7C8-01524E5B1152}" />
+    <r id="{AC03DC51-0BDF-4D5C-8EA1-4EB71F2B977D}" par="Id=ActionBar" ph="ActionBar" uid="{9B1CE484-622C-4E63-885C-ED8EFFA2930F}" />
+    <r id="{C03E9CF5-EE02-4B11-8F06-8E124CF3F6CE}" par="Id=BackButton" ph="ActionBar.Back" uid="{20C11CAF-CF84-40F0-A614-C4B578981FC8}" />
+    <r id="{D2528258-6EC6-42C0-A298-E8E36AD7AA3A}" par="Id=ContextToggle&amp;IsOpen=1" ph="ActionBar.Actions" uid="{AFA4272A-4C61-45E1-BDBF-14909E0E7C20}" />
+    <r id="{08994B8F-7BF1-4963-815D-0FA8D75B3D86}" par="Id=ActionBarRightBorder" ph="ActionBar.Actions" uid="{FB18ECF3-EFAC-41C5-8F7C-27E1D1402454}" />
+    <r id="{88C38B36-787A-43FA-85D4-FE08B0A4B7FF}" par="Id=SaveButton&amp;IsEnabled=1&amp;IsVisible=1" ph="ActionBarRightBorder.Content" uid="{05931135-591E-4D47-A558-A1629B5B11D1}" />
+    <r ds="{57755182-D7F1-4E03-877C-93361AC276E2}" id="{43F4C6E5-22F1-41BF-A317-B213C1ABBDA5}" par="IsEnabled=1&amp;IsVisible=1&amp;Id=ActionControl" ph="ActionBar.Actions" uid="{E4B190B5-CB34-4323-95B8-841CAC4FEE1B}" />
+    <r id="{08994B8F-7BF1-4963-815D-0FA8D75B3D86}" par="Id=ActionBarLeftBorder" ph="ActionBar.Actions" uid="{2411CAC6-608F-4557-A8C6-4732320535AA}" />
+    <r id="{40D5B875-6A71-4F02-90AB-13C617375AE1}" par="Id=LanguageDropDownButton" ph="ActionBarLeftBorder.Content" uid="{BACB1AD4-3960-4B8E-A451-36655D00A72F}" />
+    <r id="{6F8AB6DD-9307-4AD3-964E-5B84F0B9B4F0}" par="Id=LanguageListControl" ph="LanguageDropDownButton.Content" uid="{17DDC01A-8219-40CA-8E9D-88F872EE5F1B}" />
+    <r id="{8C3B1C75-9DBA-49BC-AC49-CD9AD5559FD6}" par="Id=MessageBar" ph="Content" uid="{9905DBF2-3650-44EF-B465-48C7E73F738C}" />
+    <r id="{4FCB66FF-03DF-4F4E-BD4D-A017CDFC4B09}" par="Id=ProgressIndicatorPanel&amp;IsFullWidth=1" ph="Content" uid="{13A2C011-21FA-4AC3-B969-1A410F9E9583}" />
+    <r id="{08994B8F-7BF1-4963-815D-0FA8D75B3D86}" par="Id=MainBorder&amp;PaddingType=All&amp;UsePadding=1" ph="ProgressIndicatorPanel.Content" uid="{32068EAC-0FB5-4242-BEE3-1FF002CBD2CA}" />
+    <r id="{08994B8F-7BF1-4963-815D-0FA8D75B3D86}" par="Id=FormDesignBorder&amp;IsVisible=1&amp;UsePadding=0" ph="MainBorder.Content" uid="{620864E4-DB4D-4AD1-88C2-E6F50BE28395}" />
+    <r id="{F5FE5ADA-E454-45A4-A1C6-E1FFDD85E675}" par="Id=FormDesignBoard" ph="FormDesignBorder.Content" uid="{1C75FDD5-FFB5-4C93-928E-421AA35637F7}" />
+    <r id="{16C853BF-B69D-421D-83F5-D78EFAC348E5}" par="Id=ContextForInfoTab&amp;IsFooterHidden=1" ph="Context" uid="{543C200E-A434-49E4-9C7D-A4F99DFE0084}" />
+    <r id="{7CE24006-7B34-4678-BC91-7675C6E2C9B9}" par="ConfigurationItem=%7b6997AA81-5DB5-48FA-B783-FA0A219B9803%7d&amp;IsVisible=1&amp;Id=InfoTabControl" ph="ContextForInfoTab.Content" uid="{45859041-B075-4D9E-93E2-9291C3759DD6}" />
+    <r id="{88C38B36-787A-43FA-85D4-FE08B0A4B7FF}" par="ConfigurationItem=%7b5AEE176B-39BB-46DA-96CA-6F15ADC8F414%7d&amp;Id=ApplyChangesButton&amp;IsFullWidth=0" ph="ContextForInfoTab.Buttons" uid="{0A2EF736-2457-4AB9-9685-73B5E4776D61}" />
+    <r id="{88C38B36-787A-43FA-85D4-FE08B0A4B7FF}" par="ConfigurationItem=%7b12631B73-8372-463E-BDFA-1139CDA8D763%7d&amp;Id=CancelButton&amp;IsFullWidth=0" ph="ContextForInfoTab.Buttons" uid="{97655799-0256-40CD-A694-890535B8EFFF}" />
+    <r id="{16C853BF-B69D-421D-83F5-D78EFAC348E5}" par="ConfigurationItem=%7b993AA6EB-480F-43E2-A51C-2609E5FF30E6%7d&amp;Id=ContextForPropertyGrid&amp;IsVisible=0" ph="Context" uid="{B0752ABC-986B-4DB6-811C-F909E21D4119}" />
+    <r id="{DE943A70-61A4-4D27-A166-C79A5BC9683A}" par="ConfigurationItem=%7b6A5B82DC-10D7-4058-974F-7BBFC8EFBD29%7d&amp;Id=PropertyGrid" ph="ContextForPropertyGrid.Content" uid="{5EC71345-D12C-4021-AAC4-B30E8D7CE7BD}" />
+    <r id="{88C38B36-787A-43FA-85D4-FE08B0A4B7FF}" par="ConfigurationItem=%7b856F3C6E-A1D4-44A7-B37B-4CDA290723D3%7d&amp;Id=PropertyGridApplyChangesButton&amp;IsFullWidth=0" ph="ContextForPropertyGrid.Buttons" uid="{7E7EA5E6-3A5D-4E42-9840-EDE74D04E85B}" />
+    <r id="{88C38B36-787A-43FA-85D4-FE08B0A4B7FF}" par="ConfigurationItem=%7bC18C310A-7C1B-4966-BDD5-336F01EB4D7D%7d&amp;Id=PropertyGridCancelButton&amp;IsFullWidth=0" ph="ContextForPropertyGrid.Buttons" uid="{05FB9D4C-718C-415B-91CA-61B3CF2B4C91}" />
+  </d>
+</r>
+----version----
+language: de-DE
+version: 1
+revision: 486272ef-7bb9-4f13-8f24-af17caee5462
+
+----field----
+field: {7205A57F-93B4-413A-AA9A-6B16BBC59565}
+name: BrowserTitle
+key: browsertitle
+content-length: 16
+
+Formulardesigner
+----field----
+field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
+name: __Display name
+key: __display name
+content-length: 16
+
+Formulardesigner
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20191217T121812Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+486272ef-7bb9-4f13-8f24-af17caee5462
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20191217T121812Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
+----version----
+language: en
+version: 1
+revision: d83c15f5-f108-44cc-966f-a7948439cfd2
+
+----field----
+field: {7205A57F-93B4-413A-AA9A-6B16BBC59565}
+name: BrowserTitle
+key: browsertitle
+content-length: 13
+
+Form designer
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20160419T115022Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+d83c15f5-f108-44cc-966f-a7948439cfd2
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20180313T102057Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
