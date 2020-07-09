@@ -32,8 +32,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             ServiceLocator.ServiceProvider.GetService<IXConnectContactFactory>(),
             ServiceLocator.ServiceProvider.GetService<ISaveMarketingPreferencesService<SaveMarketingPreferencesData>>(),
             ServiceLocator.ServiceProvider.GetService<IMarketingPreferencesService>(),
-            ServiceLocator.ServiceProvider.GetService<IExmSubscriptionManager>(),
-            ServiceLocator.ServiceProvider.GetService<ListManagerWrapper>())
+            ServiceLocator.ServiceProvider.GetService<ListManagerWrapper>(),
+            ServiceLocator.ServiceProvider.GetService<IExmSubscriptionClientApiService>())
         {
         }
 
@@ -44,8 +44,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<SaveMarketingPreferencesData> saveMarketingPreferencesService,
             IMarketingPreferencesService marketingPreferencesService,
-            IExmSubscriptionManager exmSubscriptionManager,
-            ListManagerWrapper listManagerWrapper) : base(submitActionData, logger, xConnectContactService, xConnectContactFactory, saveMarketingPreferencesService, marketingPreferencesService, exmSubscriptionManager, listManagerWrapper)
+            ListManagerWrapper listManagerWrapper,
+            IExmSubscriptionClientApiService exmSubscriptionClientApiService) : base(submitActionData, logger, xConnectContactService, xConnectContactFactory, saveMarketingPreferencesService, marketingPreferencesService, listManagerWrapper, exmSubscriptionClientApiService)
         {
             Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             _xConnectContactService = xConnectContactService;

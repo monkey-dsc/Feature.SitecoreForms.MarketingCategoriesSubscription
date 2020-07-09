@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Feature.SitecoreForms.MarketingCategoriesSubscription.Constants;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.Analytics;
-using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.DependencyInjection;
 using Sitecore.EmailCampaign.Model.XConnect;
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
@@ -11,9 +7,7 @@ using Sitecore.EmailCampaign.XConnect.Web;
 using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.Framework.Conditions;
 using Sitecore.Modules.EmailCampaign.Core.Contacts;
-using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
-using Sitecore.XConnect.Collection.Model;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Services.Contact
 {

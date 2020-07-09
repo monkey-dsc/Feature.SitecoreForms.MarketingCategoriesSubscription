@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.Exceptions;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Data;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Services;
@@ -33,8 +34,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         private readonly IXConnectContactFactory _xConnectContactFactory;
         private readonly ISaveMarketingPreferencesService<T> _saveMarketingPreferencesService;
         private readonly IMarketingPreferencesService _marketingPreferenceService;
-        private readonly IExmSubscriptionManager _exmSubscriptionManager;
         private readonly ListManagerWrapper _listManagerWrapper;
+        private readonly IExmSubscriptionClientApiService _exmSubscriptionClientApiService;
         private readonly bool _useDoubleOptIn = Settings.GetBoolSetting("NewsletterSubscription.UseDoubleOptInForSubscription", true); // GDPR, sorry for the default value!
 
         protected SaveMarketingPreferencesBase(
@@ -44,24 +45,23 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             IXConnectContactFactory xConnectContactFactory,
             ISaveMarketingPreferencesService<T> saveMarketingPreferencesService,
             IMarketingPreferencesService marketingPreferenceService,
-            IExmSubscriptionManager exmSubscriptionManager,
-            ListManagerWrapper listManagerWrapper) : base(submitActionData)
+            ListManagerWrapper listManagerWrapper,
+            IExmSubscriptionClientApiService exmSubscriptionClientApiService) : base(submitActionData)
         {
             Condition.Requires(logger, nameof(logger)).IsNotNull();
             Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             Condition.Requires(xConnectContactFactory, nameof(xConnectContactFactory)).IsNotNull();
             Condition.Requires(saveMarketingPreferencesService, nameof(saveMarketingPreferencesService)).IsNotNull();
             Condition.Requires(marketingPreferenceService, nameof(marketingPreferenceService)).IsNotNull();
-            Condition.Requires(exmSubscriptionManager, nameof(exmSubscriptionManager)).IsNotNull();
-            Condition.Requires(exmSubscriptionManager, nameof(exmSubscriptionManager)).IsNotNull();
+            Condition.Requires(exmSubscriptionClientApiService, nameof(exmSubscriptionClientApiService)).IsNotNull();
 
             Logger = logger;
             _xConnectContactService = xConnectContactService;
             _xConnectContactFactory = xConnectContactFactory;
             _saveMarketingPreferencesService = saveMarketingPreferencesService;
             _marketingPreferenceService = marketingPreferenceService;
-            _exmSubscriptionManager = exmSubscriptionManager;
             _listManagerWrapper = listManagerWrapper;
+            _exmSubscriptionClientApiService = exmSubscriptionClientApiService;
         }
 
         protected override bool Execute(T data, FormSubmitContext formSubmitContext)
@@ -159,16 +159,16 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 return;
             }
 
-            SubscribeContact(managerRoot, contactList, newContact, newMarketingPreferences);
+            SubscribeContact(managerRoot, contactList, newContact, contactIdentifier, newMarketingPreferences);
         }
 
         private void UnsubscribeFromAll(Contact contact, ContactIdentifier contactIdentifier, ManagerRoot managerRoot, Guid listId)
         {
             _saveMarketingPreferencesService.ResetExmKeyBehaviorCache(contactIdentifier);
-            _exmSubscriptionManager.UnsubscribeFromAll(contact, managerRoot);
+            _exmSubscriptionClientApiService.UnsubscribeFromAll(contact, managerRoot);
         }
 
-        private void SubscribeContact(ManagerRoot managerRoot, ContactList contactList, Contact contact, List<MarketingPreference> marketingPreferences)
+        private void SubscribeContact(ManagerRoot managerRoot, ContactList contactList, Contact contact, ContactIdentifier contactIdentifier, List<MarketingPreference> marketingPreferences)
         {
             if (_useDoubleOptIn)
             {
@@ -179,7 +179,14 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 
                 // If DoubleOptIn should be used the contact is subscribed to the selected contact list and gets a confirmation mail
                 // The contact is only subscribed to the global contact list, which is used as source for the segmented lists, if he confirms the link in the mail
-                _exmSubscriptionManager.Subscribe(contact, contactList.ContactListDefinition.Id, managerRoot, true);
+                var message = new SubscribeContactMessage
+                {
+                    RecipientListId = contactList.ContactListDefinition.Id,
+                    ContactIdentifier = contactIdentifier,
+                    ManagerRootId = managerRoot.Id,
+                    SendSubscriptionConfirmation = true
+                };
+                _exmSubscriptionClientApiService.Subscribe(message);
             }
 
             _marketingPreferenceService.SavePreferences(contact, marketingPreferences);

@@ -16,8 +16,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Configuration
     {
         public void Configure(IServiceCollection serviceCollection)
         {
-            // EXM
-            serviceCollection.AddSingleton<IExmSubscriptionManager, ExmSubscriptionManager>();
+            serviceCollection.AddSingleton<IExmSubscriptionClientApiService, ExmSubscriptionClientApiService>();
             serviceCollection.AddSingleton<IExmContactService, ExmContactService>();
 
             // Forms

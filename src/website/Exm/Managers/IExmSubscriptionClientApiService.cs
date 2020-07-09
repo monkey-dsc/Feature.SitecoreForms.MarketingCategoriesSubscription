@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging;
 using Sitecore.Modules.EmailCampaign;
 using Sitecore.XConnect;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers
 {
-    public interface IExmSubscriptionManager
+    public interface IExmSubscriptionClientApiService
     {
-        bool Subscribe(Contact contact, Guid recipientListId, ManagerRoot managerRoot, bool subscriptionConfirmation);
+        void Subscribe(SubscribeContactMessage message);
         void UnsubscribeFromAll(Contact contact, ManagerRoot managerRoot);
     }
 }

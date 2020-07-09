@@ -101,6 +101,8 @@
       <PackageReference Include="Sitecore.EmailCampaign.Cm" Version="9.2.0">
           <PrivateAssets>all</PrivateAssets>
       </PackageReference>
+      <PackageReference Include="Sitecore.ExM.Framework" Version="9.2.0" />
+      <PackageReference Include="Sitecore.Framework.Messaging.Abstractions" Version="4.0.1" />
       <PackageReference Include="Sitecore.Kernel" Version="9.2.0">
           <PrivateAssets>all</PrivateAssets>
       </PackageReference>
