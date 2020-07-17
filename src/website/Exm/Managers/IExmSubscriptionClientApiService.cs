@@ -7,6 +7,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers
     public interface IExmSubscriptionClientApiService
     {
         void Subscribe(SubscribeContactMessage message);
-        void UnsubscribeFromAll(Contact contact, ManagerRoot managerRoot);
+        void UnsubscribeFromAll(ContactIdentifier contact, ManagerRoot managerRoot);
     }
 }

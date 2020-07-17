@@ -1,4 +1,5 @@
 ﻿using System;
+using Sitecore.Globalization;
 using Sitecore.XConnect;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging
@@ -18,6 +19,12 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging
         }
 
         public Guid ManagerRootId
+        {
+            get;
+            set;
+        }
+
+        public Language ContextLanguage
         {
             get;
             set;

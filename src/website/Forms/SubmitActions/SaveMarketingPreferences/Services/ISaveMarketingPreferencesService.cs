@@ -4,7 +4,6 @@ using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
 using Sitecore.ExperienceForms.Models;
 using Sitecore.ExperienceForms.Mvc.Models.Fields;
-using Sitecore.ListManagement;
 using Sitecore.Modules.EmailCampaign;
 using Sitecore.XConnect;
 
@@ -18,7 +17,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
         void ResetExmKeyBehaviorCache(ContactIdentifier contactIdentifier);
         MarketingPreferencesViewModel GetMarketingPreferencesViewModel(IEnumerable<IViewModel> fields);
         ManagerRoot GetManagerRoot(MarketingPreferencesViewModel model);
-        ContactList GetAndValidateContactList(MarketingPreferencesViewModel model, bool useDoubleOptIn);
         IEnumerable<MarketingPreference> GetSelectedMarketingPreferences(ListViewModel model, ManagerRoot managerRoot, IReadOnlyCollection<MarketingPreference> contactMarketingPreferences);
     }
 }

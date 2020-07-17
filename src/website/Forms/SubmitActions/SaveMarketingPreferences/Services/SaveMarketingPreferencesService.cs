@@ -16,8 +16,6 @@ using Sitecore.EmailCampaign.Model.XConnect.Facets;
 using Sitecore.ExperienceForms.Models;
 using Sitecore.ExperienceForms.Mvc.Models.Fields;
 using Sitecore.Framework.Conditions;
-using Sitecore.ListManagement;
-using Sitecore.Marketing.Definitions.ContactLists;
 using Sitecore.Modules.EmailCampaign;
 using Sitecore.Modules.EmailCampaign.ListManager;
 using Sitecore.Modules.EmailCampaign.Services;
@@ -122,18 +120,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             return model == null || string.IsNullOrEmpty(model.ManagerRootId) ? null : _managerRootService.GetManagerRoot(new Guid(model.ManagerRootId));
         }
 
-        public ContactList GetAndValidateContactList(MarketingPreferencesViewModel model, bool useDoubleOptIn)
-        {
-            if (model == null || string.IsNullOrEmpty(model.ContactListId))
-            {
-                return null;
-            }
-
-            var contactList = _listManagerWrapper.FindById(new Guid(model.ContactListId));
-            ValidateContactList(contactList, useDoubleOptIn);
-            return contactList;
-        }
-
         public IEnumerable<MarketingPreference> GetSelectedMarketingPreferences(ListViewModel model, ManagerRoot managerRoot, IReadOnlyCollection<MarketingPreference> contactMarketingPreferences)
         {
             var preferencesList = new List<MarketingPreference>();
@@ -163,15 +149,6 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             var fieldList = fields.ToList();
             var field = (StringInputViewModel)fieldList.FirstOrDefault(x => x.ItemId == guid.ToString());
             return field != null ? field.Value : string.Empty;
-        }
-
-
-        private static void ValidateContactList(ContactList contactList, bool useDoubleOptIn)
-        {
-            if (useDoubleOptIn && contactList == null || contactList.ContactListDefinition.Id == Guid.Empty || contactList.ContactListDefinition.Type == ListType.SegmentedList)
-            {
-                throw new ContactListException();
-            }
         }
 
         private static MarketingPreference CreateMarketingPreference(ManagerRoot managerRoot, string preferenceId, bool selectedPreference)

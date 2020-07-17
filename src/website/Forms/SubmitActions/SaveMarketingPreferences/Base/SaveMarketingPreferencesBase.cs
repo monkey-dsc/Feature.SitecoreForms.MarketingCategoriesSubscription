@@ -4,6 +4,7 @@ using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Managers;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.Exceptions;
+using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Data;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActions.SaveMarketingPreferences.Services;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.XConnect.Factories;
@@ -18,8 +19,7 @@ using Sitecore.ExperienceForms.Models;
 using Sitecore.ExperienceForms.Processing;
 using Sitecore.ExperienceForms.Processing.Actions;
 using Sitecore.Framework.Conditions;
-using Sitecore.ListManagement;
-using Sitecore.Marketing.Definitions.ContactLists;
+using Sitecore.Globalization;
 using Sitecore.Modules.EmailCampaign;
 using Sitecore.Modules.EmailCampaign.ListManager;
 using Sitecore.XConnect;
@@ -114,26 +114,26 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 throw new ManagerRootException();
             }
 
+            var listId = ParseContactListId(marketingPreferencesViewModel);
+
+            if (!listId.HasValue)
+            {
+                throw new ContactListException();
+            }
+
             var contact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
             if (contact != null)
             {
-                var globalList = _listManagerWrapper.FindById(new Guid(marketingPreferencesViewModel.ContactListId));
-                if (globalList != null)
+                if (IsContactSubscribedToList(contact, listId.Value))
                 {
-                    var contacts = _listManagerWrapper.GetContacts(globalList);
-                    if (contacts.Any(x => x.Identifiers
-                                           .Where(i => i.IdentifierType == ContactIdentifierType.Known)
-                                           .Any(y => y.Identifier == contactIdentifier.Identifier)))
+                    if (!_saveMarketingPreferencesService.AuthenticateContact(contact))
                     {
-                        if (_saveMarketingPreferencesService.AuthenticateContact(contact))
-                        {
-                            var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
-                            _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
-                            return;
-                        }
-
                         throw new ContactIdentifierException();
                     }
+
+                    var marketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, contact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
+                    _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
+                    return;
                 }
             }
 
@@ -150,41 +150,63 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             _saveMarketingPreferencesService.SetPersonalInformation(data, fields, newContact, contactIdentifier);
             _saveMarketingPreferencesService.SetExmKeyBehaviorCache(newContact);
 
-            var contactList = _saveMarketingPreferencesService.GetAndValidateContactList(marketingPreferencesViewModel, _useDoubleOptIn);
             var newMarketingPreferences = _saveMarketingPreferencesService.GetSelectedMarketingPreferences(marketingPreferencesViewModel, managerRoot, newContact.ExmKeyBehaviorCache()?.MarketingPreferences).ToList();
 
             if (newMarketingPreferences.All(x => x.Preference == false))
             {
-                UnsubscribeFromAll(newContact, contactIdentifier, managerRoot, contactList.ContactListDefinition.Id);
+                UnsubscribeFromAll(contactIdentifier, managerRoot);
                 return;
             }
 
-            SubscribeContact(managerRoot, contactList, newContact, contactIdentifier, newMarketingPreferences);
+            SubscribeContact(managerRoot, listId.Value, newContact, contactIdentifier, newMarketingPreferences);
         }
 
-        private void UnsubscribeFromAll(Contact contact, ContactIdentifier contactIdentifier, ManagerRoot managerRoot, Guid listId)
+        private static Guid? ParseContactListId(MarketingPreferencesViewModel marketingPreferencesViewModel)
+        {
+            if (!Guid.TryParse(marketingPreferencesViewModel.ContactListId, out var parsedListId) || parsedListId == Guid.Empty)
+            {
+                return null;
+            }
+
+            return parsedListId;
+        }
+
+        private static bool IsContactSubscribedToList(Contact contact, Guid listId)
+        {
+            var listSubscription = contact.ListSubscriptions();
+            if (listSubscription == null)
+            {
+                return false;
+            }
+            return listSubscription.Subscriptions.Any(x => {
+                if (!x.IsActive)
+                {
+                    return false;
+                }
+                return x.ListDefinitionId == listId;
+            });
+        }
+
+
+        private void UnsubscribeFromAll(ContactIdentifier contactIdentifier, ManagerRoot managerRoot)
         {
             _saveMarketingPreferencesService.ResetExmKeyBehaviorCache(contactIdentifier);
-            _exmSubscriptionClientApiService.UnsubscribeFromAll(contact, managerRoot);
+            _exmSubscriptionClientApiService.UnsubscribeFromAll(contactIdentifier, managerRoot);
         }
 
-        private void SubscribeContact(ManagerRoot managerRoot, ContactList contactList, Contact contact, ContactIdentifier contactIdentifier, List<MarketingPreference> marketingPreferences)
+        private void SubscribeContact(ManagerRoot managerRoot, Guid listId, Contact contact, ContactIdentifier contactIdentifier, List<MarketingPreference> marketingPreferences)
         {
             if (_useDoubleOptIn)
             {
-                if (contactList == null || contactList.ContactListDefinition.Id == Guid.Empty || contactList.ContactListDefinition.Type == ListType.SegmentedList)
-                {
-                    throw new ContactListException();
-                }
-
                 // If DoubleOptIn should be used the contact is subscribed to the selected contact list and gets a confirmation mail
                 // The contact is only subscribed to the global contact list, which is used as source for the segmented lists, if he confirms the link in the mail
                 var message = new SubscribeContactMessage
                 {
-                    RecipientListId = contactList.ContactListDefinition.Id,
+                    RecipientListId = listId,
                     ContactIdentifier = contactIdentifier,
                     ManagerRootId = managerRoot.Id,
-                    SendSubscriptionConfirmation = true
+                    SendSubscriptionConfirmation = true,
+                    ContextLanguage = Language.Current
                 };
                 _exmSubscriptionClientApiService.Subscribe(message);
             }

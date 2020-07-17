@@ -9,6 +9,8 @@ using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.Framework.Conditions;
 using Sitecore.Framework.Messaging;
 using Sitecore.Framework.Messaging.DeferStrategies;
+using Sitecore.Globalization;
+using Sitecore.Marketing.Definitions.ContactLists;
 using Sitecore.Modules.EmailCampaign;
 using Sitecore.Modules.EmailCampaign.Core.Contacts;
 using Sitecore.Modules.EmailCampaign.ListManager;
@@ -19,7 +21,9 @@ using Sitecore.XConnect.Schema;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging
 {
-    public class SubscribeContactMessageHandler : IMessageHandler<SubscribeContactMessage>, IMessageHandler
+    // ReSharper disable once UnusedMember.Global
+    // note: instantiated by sitecore config
+    public class SubscribeContactMessageHandler : IMessageHandler<SubscribeContactMessage>
     {
         private readonly ILogger _logger;
 
@@ -48,6 +52,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging
             Condition.Requires(xConnectContactService, nameof(xConnectContactService)).IsNotNull();
             Condition.Requires(managerRootService, nameof(managerRootService)).IsNotNull();
             Condition.Requires(listManagerWrapper, nameof(listManagerWrapper)).IsNotNull();
+
             _logger = logger;
             _subscriptionManager = (SubscriptionManager)subscriptionManager;
             _deferStrategy = deferStrategy;
@@ -59,9 +64,9 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging
 
         public async Task Handle(SubscribeContactMessage message, IMessageReceiveContext receiveContext, IMessageReplyContext replyContext)
         {
-            Condition.Requires<SubscribeContactMessage>(message, "message").IsNotNull<SubscribeContactMessage>();
-            Condition.Requires<IMessageReceiveContext>(receiveContext, "receiveContext").IsNotNull<IMessageReceiveContext>();
-            Condition.Requires<IMessageReplyContext>(replyContext, "replyContext").IsNotNull<IMessageReplyContext>();
+            Condition.Requires(message, "message").IsNotNull();
+            Condition.Requires(receiveContext, "receiveContext").IsNotNull();
+            Condition.Requires(replyContext, "replyContext").IsNotNull();
             var configuredTaskAwaitable = _deferStrategy.ExecuteAsync(_bus, message, receiveContext, () => SubscribeContact(message)).ConfigureAwait(false);
             if (!(await configuredTaskAwaitable).Deferred)
             {
@@ -74,26 +79,35 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Exm.Messaging
         }
         protected HandlerResult SubscribeContact(SubscribeContactMessage message)
         {
-            _logger.LogDebug(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", new object[] { "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier })));
-
-            var managerRoot = _managerRootService.GetManagerRoot(message.ManagerRootId);
-            var contact = _xConnectContactService.GetXConnectContact(message.ContactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
-
-            var result =  HandleSubscriptionInternal(message.RecipientListId, contact, managerRoot, message.SendSubscriptionConfirmation);
-
-            if (result)
+            using (new LanguageSwitcher(message.ContextLanguage))
             {
-                return new HandlerResult(HandlerResultType.Successful);
+                _logger.LogDebug(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", new object[] { "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier })));
+
+                var managerRoot = _managerRootService.GetManagerRoot(message.ManagerRootId);
+                var contact = _xConnectContactService.GetXConnectContact(message.ContactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+
+                var result =  HandleSubscriptionInternal(message.RecipientListId, contact, managerRoot, message.SendSubscriptionConfirmation);
+
+                if (result)
+                {
+                    return new HandlerResult(HandlerResultType.Successful);
+                }
+                _logger.LogError(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Failed to subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", new object[] { "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier })));
+                return new HandlerResult(HandlerResultType.Error);
             }
-            _logger.LogError(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Failed to subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", new object[] { "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier })));
-            return new HandlerResult(HandlerResultType.Error);
         }
 
         private bool HandleSubscriptionInternal(Guid recipientListId, Contact contact, ManagerRoot managerRoot, bool sendConfirmationMail)
         {
-            if (_listManagerWrapper.FindById(recipientListId) == null)
+            var contactList = _listManagerWrapper.FindById(recipientListId);
+            if (contactList == null)
             {
                 return false;
+            }
+
+            if (contactList.ContactListDefinition.Type == ListType.SegmentedList)
+            {
+                return false; //note: segmented list is not allowed to subscribe to!
             }
 
             var isSubscribed = _listManagerWrapper.IsSubscribed(recipientListId, contact);
