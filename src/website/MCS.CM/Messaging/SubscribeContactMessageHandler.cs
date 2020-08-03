@@ -28,7 +28,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.CM.Messaging
             Condition.Requires(logger, nameof(logger)).IsNotNull();
             Condition.Requires(deferStrategy, nameof(deferStrategy)).IsNotNull();
             Condition.Requires(bus, nameof(bus)).IsNotNull();
-            Condition.Requires(_subscribeContactService, nameof(_subscribeContactService)).IsNotNull();
+            Condition.Requires(subscribeContactService, nameof(subscribeContactService)).IsNotNull();
 
             _logger = logger;
             _deferStrategy = deferStrategy;

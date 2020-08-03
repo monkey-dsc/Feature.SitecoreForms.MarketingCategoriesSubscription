@@ -78,7 +78,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
             var isValid = Guid.TryParse(selectedManagerRootId, out var guidOutput);
             if (!isValid)
             {
-                _logger.LogError("No Valid Manager Root!");
+                _logger.LogError($"No Valid Manager Root: {selectedManagerRootId}!");
                 return;
             }
 
@@ -86,7 +86,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
 
             if (managerRoot == null)
             {
-                _logger.LogError("You have to select a valid Manager Root!");
+                _logger.LogError($"You have to select a valid Manager Root: {selectedManagerRootId}!");
                 return;
             }
 
