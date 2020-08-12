@@ -117,7 +117,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 throw new ContactListException();
             }
 
-            var contact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+            var contact = GetXConnectContactByIdentifer(contactIdentifier);
             if (contact != null)
             {
                 if (IsContactSubscribedToList(contact, listId.Value))
@@ -137,7 +137,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             _xConnectContactService.IdentifyCurrent(customXConnectContact);
             _xConnectContactService.UpdateOrCreateContact(customXConnectContact);
 
-            var newContact = _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+            var newContact = GetXConnectContactByIdentifer(contactIdentifier);
             if (newContact == null)
             {
                 throw new ContactException();
@@ -154,7 +154,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 return;
             }
 
-            SubscribeContact(managerRoot, listId.Value, newContact, contactIdentifier, newMarketingPreferences);
+            SubscribeContact(managerRoot, listId.Value, contactIdentifier, newMarketingPreferences);
         }
 
         private static Guid? ParseContactListId(MarketingPreferencesViewModel marketingPreferencesViewModel)
@@ -190,7 +190,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
             _exmSubscriptionClientApiService.UnsubscribeFromAll(contactIdentifier, managerRoot);
         }
 
-        private void SubscribeContact(ManagerRoot managerRoot, Guid listId, Contact contact, ContactIdentifier contactIdentifier, List<MarketingPreference> marketingPreferences)
+        private void SubscribeContact(ManagerRoot managerRoot, Guid listId, ContactIdentifier contactIdentifier, List<MarketingPreference> marketingPreferences)
         {
             if (_useDoubleOptIn)
             {
@@ -207,9 +207,14 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
                 _exmSubscriptionClientApiService.Subscribe(message);
             }
 
+            var contact = GetXConnectContactByIdentifer(contactIdentifier);
             _marketingPreferenceService.SavePreferences(contact, marketingPreferences);
         }
 
         protected abstract ContactIdentifier GetContactIdentifier(T data, IEnumerable<IViewModel> fields);
+        private Contact GetXConnectContactByIdentifer(ContactIdentifier contactIdentifier)
+        {
+            return _xConnectContactService.GetXConnectContact(contactIdentifier, PersonalInformation.DefaultFacetKey, ExmKeyBehaviorCache.DefaultFacetKey, EmailAddressList.DefaultFacetKey, ListSubscriptions.DefaultFacetKey);
+        }
     }
 }
