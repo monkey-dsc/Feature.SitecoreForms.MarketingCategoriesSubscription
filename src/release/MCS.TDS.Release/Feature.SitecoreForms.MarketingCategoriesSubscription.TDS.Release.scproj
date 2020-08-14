@@ -31,10 +31,10 @@
     <ContinueOnItemDeployError>False</ContinueOnItemDeployError>
     <PackageName>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</PackageName>
     <PackageAuthor>monkey.dsc</PackageAuthor>
-    <PackagePublisher>CAMAO IDC GmbH</PackagePublisher>
+    <PackagePublisher>monkey.dsc</PackagePublisher>
     <PackageVersion />
     <PackageReadme />
-    <SitecoreAssemblyPath>C:\Users\ldb\.nuget\packages</SitecoreAssemblyPath>
+    <SitecoreAssemblyPath>$(UserProfile)\.nuget\packages</SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>False</PackageExcludeCode>
@@ -46,10 +46,10 @@
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
     <PackageName>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</PackageName>
     <PackageAuthor>monkey.dsc</PackageAuthor>
-    <PackagePublisher>CAMAO IDC GmbH</PackagePublisher>
+    <PackagePublisher>monkey.dsc</PackagePublisher>
     <PackageVersion />
     <PackageReadme />
-    <SitecoreAssemblyPath />
+    <SitecoreAssemblyPath>$(UserProfile)\.nuget\packages</SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>False</PackageExcludeCode>
