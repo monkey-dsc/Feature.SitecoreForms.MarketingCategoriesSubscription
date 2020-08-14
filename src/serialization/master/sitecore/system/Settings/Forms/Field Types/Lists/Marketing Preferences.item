@@ -8,15 +8,15 @@ name: Marketing Preferences
 master: {00000000-0000-0000-0000-000000000000}
 template: {A60EDCAF-1285-46B5-8380-D790BB8C8708}
 templatekey: Field Type
-created: 20190604T130456Z
+created: 20190724T140753Z
 
 ----field----
 field: {12594037-53E5-44C0-AD63-DEB52DEAD374}
 name: View Path
 key: view path
-content-length: 35
+content-length: 38
 
-FieldTemplates/MarketingPreferences
+MCSFieldTemplates/MarketingPreferences
 ----field----
 field: {16882A65-D10B-4E9E-9D6A-B13480A34F2D}
 name: Model Type
@@ -69,7 +69,7 @@ Office/32x32/clipboard_checks.png
 ----version----
 language: de-DE
 version: 1
-revision: 440d1b67-4eab-45aa-a02b-18cdf3585bf1
+revision: c6c23e8f-0b9e-4585-b925-3c3649d15b62
 
 ----field----
 field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
@@ -105,21 +105,21 @@ name: __Revision
 key: __revision
 content-length: 36
 
-440d1b67-4eab-45aa-a02b-18cdf3585bf1
+c6c23e8f-0b9e-4585-b925-3c3649d15b62
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20191129T135403Z
+20200730T074218Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock

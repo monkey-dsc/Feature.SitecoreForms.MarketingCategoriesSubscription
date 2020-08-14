@@ -1,0 +1,80 @@
+----item----
+version: 1
+id: {604F273E-9873-482B-89D0-FCA1900937ED}
+database: master
+path: /sitecore/Forms/EXM/Newsletter Subscription Example/Form page/IsKnownContact
+parent: {4E75A989-BA3F-4214-9A39-BF466F834125}
+name: IsKnownContact
+master: {00000000-0000-0000-0000-000000000000}
+template: {36FB75FC-FCA4-4875-806B-1D1EDE9F9F09}
+templatekey: IsKnownContact
+created: 20200731T080002Z
+
+----field----
+field: {589A7ADE-81D4-4A60-B9E2-7EAF6AE8A563}
+name: Field Type
+key: field type
+content-length: 38
+
+{C8A6C34E-8FE5-4F1E-BE29-3BB9EB630B38}
+----field----
+field: {84ECE662-5034-40CB-9C60-744DB64BB294}
+name: Field Key
+key: field key
+content-length: 32
+
+157C0FC950CE42828BD9923390A108E7
+----field----
+field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
+name: Conditions
+key: conditions
+content-length: 22
+
+{"fieldConditions":[]}
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 3
+
+200
+----version----
+language: de-DE
+version: 1
+revision: 8e4fbd8e-34ef-4709-8515-c5e2381b2bb1
+
+----field----
+field: {FE61DC17-84FB-4DFB-9A23-5F752AE33DB6}
+name: Default Value
+key: default value
+content-length: 5
+
+False
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20200731T080002Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+8e4fbd8e-34ef-4709-8515-c5e2381b2bb1
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20200731T081921Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

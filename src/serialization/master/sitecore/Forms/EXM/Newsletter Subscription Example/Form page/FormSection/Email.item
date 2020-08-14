@@ -1,0 +1,115 @@
+----item----
+version: 1
+id: {1423E55F-99E3-43FA-8A1D-38FC7DF9F0BB}
+database: master
+path: /sitecore/Forms/EXM/Newsletter Subscription Example/Form page/FormSection/Email
+parent: {F0C88547-E970-4018-82E3-A9C9A4B17C18}
+name: Email
+master: {00000000-0000-0000-0000-000000000000}
+template: {0908030B-4564-42EA-A6FA-C7A5A2D921A8}
+templatekey: Input
+created: 20200731T080001Z
+
+----field----
+field: {9F7DA002-7B86-436B-8DDA-7EFE5837B88E}
+name: Min Length
+key: min length
+content-length: 1
+
+0
+----field----
+field: {467C22B4-B1A2-4620-B8BB-74C2D8B369FC}
+name: Label Css Class
+key: label css class
+content-length: 18
+
+col-xs-12 col-sm-2
+----field----
+field: {ECD17630-5F51-45DB-B52F-B3DFAEC4FA1B}
+name: Store Binding Value
+key: store binding value
+content-length: 0
+
+
+----field----
+field: {7ABAA3F6-6EC0-4B65-A463-7919BFAE55AA}
+name: Css Class
+key: css class
+content-length: 9
+
+col-sm-10
+----field----
+field: {84ECE662-5034-40CB-9C60-744DB64BB294}
+name: Field Key
+key: field key
+content-length: 32
+
+8EABB04F183649249CFED02580835EAD
+----field----
+field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
+name: Conditions
+key: conditions
+content-length: 22
+
+{"fieldConditions":[]}
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 3
+
+200
+----version----
+language: de-DE
+version: 1
+revision: 6394e1c1-9e86-4d83-a9bc-3fbed9f4affe
+
+----field----
+field: {71FFD7B2-8B09-4F7B-8A66-1E4CEF653E8D}
+name: Title
+key: title
+content-length: 8
+
+E-Mail *
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20200731T080002Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+6394e1c1-9e86-4d83-a9bc-3fbed9f4affe
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20200731T081921Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

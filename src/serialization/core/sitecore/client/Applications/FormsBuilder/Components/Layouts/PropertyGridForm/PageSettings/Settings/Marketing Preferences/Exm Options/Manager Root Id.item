@@ -8,7 +8,7 @@ name: Manager Root Id
 master: {00000000-0000-0000-0000-000000000000}
 template: {A5491B5B-9423-4D8A-83CC-05C5B2348FF3}
 templatekey: FormItemTreeView Parameters
-created: 20190814T140440Z
+created: 20190822T093340Z
 
 ----field----
 field: {0CC7F24B-2013-46C6-8AE3-5233D094FF7C}
@@ -140,16 +140,16 @@ Single
 field: {5A8D0155-FB0C-4500-BFFD-9EC93207EEF7}
 name: Template
 key: template
-content-length: 12
+content-length: 0
 
-Manager Root
+
 ----field----
 field: {4552DA16-D994-4301-AEB1-ADC82CC69623}
 name: BaseTemplates
 key: basetemplates
-content-length: 155
+content-length: 38
 
-{CF9C8A2A-2794-4FEA-980A-EF8426F3D6C3}|{1D4EE2F1-8734-4D46-B16C-4E01F5FDB1C5}|{9CD0C84E-F852-431F-8EC8-ED4CE1D25D8D}|{A87A00B1-E6DB-45AB-8B54-636FEC3B5523}
+{1930BBEB-7805-471A-A3BE-4858AC7CF696}
 ----field----
 field: {A678FA80-DCF3-438F-A2CD-08BEBAA668F2}
 name: CheckableTemplates
@@ -167,7 +167,7 @@ Office/32x32/mail_filter.png
 ----version----
 language: da
 version: 1
-revision: 7c033bd8-758e-42a0-aa06-1ff3f6e20945
+revision: 6906f279-72fc-4e34-bd7f-1a36b142d0d5
 
 ----field----
 field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
@@ -184,54 +184,47 @@ content-length: 12
 
  Manager rod
 ----field----
-field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
-name: __Display name
-key: __display name
-content-length: 15
-
- Manager rod id
-----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
 key: __owner
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
 key: __created
 content-length: 16
 
-20190906T162734Z
+20200302T111125Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
 key: __created by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
 name: __Revision
 key: __revision
 content-length: 36
 
-7c033bd8-758e-42a0-aa06-1ff3f6e20945
+6906f279-72fc-4e34-bd7f-1a36b142d0d5
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20190906T163623Z
+20200302T111336Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock
@@ -242,8 +235,15 @@ content-length: 5
 ----version----
 language: de-DE
 version: 1
-revision: ed778a95-0d52-4480-99fc-d6cbb5433965
+revision: e46e9432-226f-400a-b01f-2e5461212bd3
 
+----field----
+field: {E17D3534-A424-47E3-8F2C-3DBBA705565F}
+name: Tooltip
+key: tooltip
+content-length: 16
+
+EXM Manager Root
 ----field----
 field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
 name: HelpText
@@ -258,13 +258,6 @@ key: formlabel
 content-length: 16
 
 EXM Manager Root
-----field----
-field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
-name: __Display name
-key: __display name
-content-length: 15
-
-Manager Root Id
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
@@ -292,21 +285,21 @@ name: __Revision
 key: __revision
 content-length: 36
 
-ed778a95-0d52-4480-99fc-d6cbb5433965
+e46e9432-226f-400a-b01f-2e5461212bd3
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20191202T144304Z
+20200724T121109Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\Admin
+sitecore\admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock
@@ -317,7 +310,7 @@ content-length: 5
 ----version----
 language: en
 version: 1
-revision: 36912161-53bd-472e-a218-fe7fce966918
+revision: 36ff8ab1-3de1-4580-b241-1c794c44bccc
 
 ----field----
 field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
@@ -334,54 +327,33 @@ content-length: 16
 
 EXM Manager Root
 ----field----
-field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
-name: __Display name
-key: __display name
-content-length: 15
-
-Manager Root Id
-----field----
-field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
-name: __Owner
-key: __owner
-content-length: 12
-
-sitecore\dsc
-----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
 key: __created
 content-length: 16
 
-20190906T162133Z
-----field----
-field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
-name: __Created by
-key: __created by
-content-length: 12
-
-sitecore\dsc
+20200302T111050Z
 ----field----
 field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
 name: __Revision
 key: __revision
 content-length: 36
 
-36912161-53bd-472e-a218-fe7fce966918
+36ff8ab1-3de1-4580-b241-1c794c44bccc
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20190906T163441Z
+20200302T111306Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock
@@ -392,7 +364,7 @@ content-length: 5
 ----version----
 language: ja-JP
 version: 1
-revision: 1bc88292-33f4-40c8-b29d-ed5cf4d69a18
+revision: 000b631d-6439-4dfa-9579-7e1dda047a7a
 
 ----field----
 field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
@@ -409,54 +381,47 @@ content-length: 9
 
 マネージャールート
 ----field----
-field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
-name: __Display name
-key: __display name
-content-length: 12
-
- マネージャールートID
-----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
 key: __owner
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
 key: __created
 content-length: 16
 
-20190906T162902Z
+20200302T111131Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
 key: __created by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
 name: __Revision
 key: __revision
 content-length: 36
 
-1bc88292-33f4-40c8-b29d-ed5cf4d69a18
+000b631d-6439-4dfa-9579-7e1dda047a7a
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20190906T163458Z
+20200302T111439Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock
@@ -467,7 +432,7 @@ content-length: 5
 ----version----
 language: zh-CN
 version: 1
-revision: 58a98a87-68dd-4cc8-aae3-00b164cf7f62
+revision: 4525a1c4-e98f-4813-ba15-ee17ac1e1b37
 
 ----field----
 field: {85F7FB0C-B383-4D91-B42E-90247EA49ACB}
@@ -484,54 +449,47 @@ content-length: 7
 
  经理Root
 ----field----
-field: {B5E02AD9-D56F-4C41-A065-A133DB87BDEB}
-name: __Display name
-key: __display name
-content-length: 6
-
- 经理根ID
-----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
 key: __owner
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
 key: __created
 content-length: 16
 
-20190906T162950Z
+20200302T111135Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
 key: __created by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
 name: __Revision
 key: __revision
 content-length: 36
 
-58a98a87-68dd-4cc8-aae3-00b164cf7f62
+4525a1c4-e98f-4813-ba15-ee17ac1e1b37
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20190906T163514Z
+20200302T111459Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
-content-length: 12
+content-length: 14
 
-sitecore\dsc
+sitecore\Admin
 ----field----
 field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
 name: __Lock

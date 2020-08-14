@@ -1,0 +1,133 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>81fb4bda-5ab9-4700-9e55-6148c4a25416</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SitecoreDatabase>master</SitecoreDatabase>
+    <CompactSitecoreItemsInProjectFile>True</CompactSitecoreItemsInProjectFile>
+    <AssemblyName>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</AssemblyName>
+    <Name>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</Name>
+    <RootNamespace>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</RootNamespace>
+    <ManageRoles>False</ManageRoles>
+    <AssemblyStatus>Include</AssemblyStatus>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+    <SitecoreDeployFolder>
+    </SitecoreDeployFolder>
+    <SitecoreWebUrl>
+    </SitecoreWebUrl>
+    <SitecoreAccessGuid>595061b7-8180-41e4-8228-9bc7b70272e8</SitecoreAccessGuid>
+    <InstallSitecoreConnector>False</InstallSitecoreConnector>
+    <BuildWebDeploy>False</BuildWebDeploy>
+    <WebDeployPackageCodeAndItemOptions>CMCDPackages</WebDeployPackageCodeAndItemOptions>
+    <WebDeployPackageName>Feature.SitecoreForms.MarketingCategoriesSubscription.Release</WebDeployPackageName>
+    <WebDeployAppendDateAndTimeToPackageName>False</WebDeployAppendDateAndTimeToPackageName>
+    <ContinueOnItemDeployError>False</ContinueOnItemDeployError>
+    <PackageName>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</PackageName>
+    <PackageAuthor>monkey.dsc</PackageAuthor>
+    <PackagePublisher>monkey.dsc</PackagePublisher>
+    <PackageVersion />
+    <PackageReadme />
+    <SitecoreAssemblyPath>$(UserProfile)\.nuget\packages</SitecoreAssemblyPath>
+    <GeneratePackage>True</GeneratePackage>
+    <SeperateFilesAndItems>False</SeperateFilesAndItems>
+    <PackageExcludeCode>False</PackageExcludeCode>
+    <AddDateTimeToPackageName>True</AddDateTimeToPackageName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+    <PackageName>Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Release</PackageName>
+    <PackageAuthor>monkey.dsc</PackageAuthor>
+    <PackagePublisher>monkey.dsc</PackagePublisher>
+    <PackageVersion />
+    <PackageReadme />
+    <SitecoreAssemblyPath>$(UserProfile)\.nuget\packages</SitecoreAssemblyPath>
+    <GeneratePackage>True</GeneratePackage>
+    <SeperateFilesAndItems>False</SeperateFilesAndItems>
+    <PackageExcludeCode>False</PackageExcludeCode>
+    <AddDateTimeToPackageName>True</AddDateTimeToPackageName>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\serialization\core\Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Core.scproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\serialization\master\Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Master.scproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\website\MCS.CD\Feature.SitecoreForms.MarketingCategoriesSubscription.CD.csproj">
+      <Project>{30b8d79d-3c34-4a17-bb46-ab619979f150}</Project>
+      <Name>Feature.SitecoreForms.MarketingCategoriesSubscription.CD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\website\MCS.CM\Feature.SitecoreForms.MarketingCategoriesSubscription.CM.csproj">
+      <Project>{e4be5d88-8f7d-4548-8ec5-b9f72d302c87}</Project>
+      <Name>Feature.SitecoreForms.MarketingCategoriesSubscription.CM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\website\MCS.Core\Feature.SitecoreForms.MarketingCategoriesSubscription.Contract.csproj">
+      <Project>{4c03b8e7-d1fb-45df-873e-9dfa298b0469}</Project>
+      <Name>Feature.SitecoreForms.MarketingCategoriesSubscription.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\website\MCS.xConnect\Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.csproj">
+      <Project>{83333d60-ea20-4f4b-814f-c268b2961124}</Project>
+      <Name>Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\website\MCS\Feature.SitecoreForms.MarketingCategoriesSubscription.csproj">
+      <Project>{5b22beb0-5c56-456c-a8a2-ef67a958c7e1}</Project>
+      <Name>Feature.SitecoreForms.MarketingCategoriesSubscription</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundledProject Include="..\..\serialization\core\Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Core.scproj">
+      <ProjectId>{40d5d21d-aa4b-446e-846f-b8b9f2891f98}</ProjectId>
+    </BundledProject>
+    <BundledProject Include="..\..\serialization\master\Feature.SitecoreForms.MarketingCategoriesSubscription.TDS.Master.scproj">
+      <ProjectId>{22ac693a-78c5-4e6a-aca3-cbc6958ab02c}</ProjectId>
+    </BundledProject>
+  </ItemGroup>
+  <ItemGroup>
+    <SourceWebProjects Include="{30b8d79d-3c34-4a17-bb46-ab619979f150}|src\website\MCS.CD\Feature.SitecoreForms.MarketingCategoriesSubscription.CD.csproj">
+      <SourceWebPhysicalPath>..\..\website\MCS.CD</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/Feature.SitecoreForms.MarketingCategoriesSubscription.CD.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>30b8d79d-3c34-4a17-bb46-ab619979f150</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{4c03b8e7-d1fb-45df-873e-9dfa298b0469}|src\website\MCS.Core\Feature.SitecoreForms.MarketingCategoriesSubscription.Contract.csproj">
+      <SourceWebPhysicalPath>..\..\website\MCS.Core</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/Feature.SitecoreForms.MarketingCategoriesSubscription.Contract.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>4c03b8e7-d1fb-45df-873e-9dfa298b0469</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{5b22beb0-5c56-456c-a8a2-ef67a958c7e1}|src\website\MCS\Feature.SitecoreForms.MarketingCategoriesSubscription.csproj">
+      <SourceWebPhysicalPath>..\..\website\MCS</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/Feature.SitecoreForms.MarketingCategoriesSubscription.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>5b22beb0-5c56-456c-a8a2-ef67a958c7e1</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{83333d60-ea20-4f4b-814f-c268b2961124}|src\website\MCS.xConnect\Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.csproj">
+      <SourceWebPhysicalPath>..\..\website\MCS.xConnect</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>83333d60-ea20-4f4b-814f-c268b2961124</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{e4be5d88-8f7d-4548-8ec5-b9f72d302c87}|src\website\MCS.CM\Feature.SitecoreForms.MarketingCategoriesSubscription.CM.csproj">
+      <SourceWebPhysicalPath>..\..\website\MCS.CM</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/Feature.SitecoreForms.MarketingCategoriesSubscription.CM.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>e4be5d88-8f7d-4548-8ec5-b9f72d302c87</SourceWebProjectId>
+    </SourceWebProjects>
+  </ItemGroup>
+  <ItemGroup>
+    <ExcludedAssemblies Include="Feature.SitecoreForms.MarketingCategoriesSubscription%2a.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
+</Project>
