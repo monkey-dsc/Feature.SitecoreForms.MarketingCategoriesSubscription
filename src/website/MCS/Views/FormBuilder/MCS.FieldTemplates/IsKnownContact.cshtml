@@ -1,0 +1,17 @@
+﻿@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@using Feature.SitecoreForms.MarketingCategoriesSubscription.Helper
+@model Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes.IsKnownContactViewModel
+
+@if (Html.Sitecore().IsExperienceFormsEditMode())
+{
+    <div>
+        <div class="form-control">
+            Is known contact field: "@Model.Name" -> Evaluates if a contact is already known.
+        </div>
+    </div>
+}
+else
+{
+    <input aria-hidden="true" id="@Html.IdFor(m => Model.Value)" name="@Html.NameFor(m => Model.Value)" type="hidden" value="@Model.Value" data-sc-tracking="@Model.IsTrackingEnabled" data-sc-field-name="@Model.Name" data-sc-field-key="@Model.ConditionSettings.FieldKey" />
+}

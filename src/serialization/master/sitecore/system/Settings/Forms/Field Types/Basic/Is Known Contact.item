@@ -1,0 +1,115 @@
+----item----
+version: 1
+id: {C8A6C34E-8FE5-4F1E-BE29-3BB9EB630B38}
+database: master
+path: /sitecore/system/Settings/Forms/Field Types/Basic/Is Known Contact
+parent: {B5350D9A-CEEE-4D15-B9FF-797CEACCCDC7}
+name: Is Known Contact
+master: {00000000-0000-0000-0000-000000000000}
+template: {A60EDCAF-1285-46B5-8380-D790BB8C8708}
+templatekey: Field Type
+created: 20200728T141209Z
+
+----field----
+field: {12594037-53E5-44C0-AD63-DEB52DEAD374}
+name: View Path
+key: view path
+content-length: 32
+
+MCSFieldTemplates/IsKnownContact
+----field----
+field: {16882A65-D10B-4E9E-9D6A-B13480A34F2D}
+name: Model Type
+key: model type
+content-length: 148
+
+Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes.IsKnownContactViewModel,Feature.SitecoreForms.MarketingCategoriesSubscription
+----field----
+field: {73F3C325-9B2A-4854-B698-038E06887FCD}
+name: Property Editor
+key: property editor
+content-length: 38
+
+{6D646529-739E-4892-973C-86D604B8C074}
+----field----
+field: {F2322BB9-BF52-45A6-A969-AC3735CC7CBF}
+name: Field Template
+key: field template
+content-length: 38
+
+{36FB75FC-FCA4-4875-806B-1D1EDE9F9F09}
+----field----
+field: {8F40D151-4155-4564-B343-FA445410E3E0}
+name: Icon
+key: icon
+content-length: 28
+
+OfficeWhite/32x32/holmes.png
+----field----
+field: {8E45815D-ADCD-4DD9-9E20-FEFDB01AAD8A}
+name: BackgroundColor
+key: backgroundcolor
+content-length: 3
+
+Sky
+----field----
+field: {06D5295C-ED2F-4A54-9BF2-26228D113318}
+name: __Icon
+key: __icon
+content-length: 23
+
+Office/32x32/holmes.png
+----version----
+language: de-DE
+version: 1
+revision: 3a6a08d7-4af8-4918-a096-d58b854f4ea3
+
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190927T183032Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 12
+
+sitecore\dsc
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+3a6a08d7-4af8-4918-a096-d58b854f4ea3
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20200730T074203Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {001DD393-96C5-490B-924A-B0F25CD9EFD8}
+name: __Lock
+key: __lock
+content-length: 5
+
+<r />

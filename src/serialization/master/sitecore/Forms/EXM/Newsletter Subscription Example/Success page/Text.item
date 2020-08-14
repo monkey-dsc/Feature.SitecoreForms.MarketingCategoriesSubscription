@@ -1,0 +1,87 @@
+----item----
+version: 1
+id: {E24DB054-09FD-4541-A246-17B7E4F5618F}
+database: master
+path: /sitecore/Forms/EXM/Newsletter Subscription Example/Success page/Text
+parent: {4DFC4707-CF3B-4AE8-8110-DF69C37D7500}
+name: Text
+master: {00000000-0000-0000-0000-000000000000}
+template: {FC18F915-EAC6-460A-8777-6E1376A9EA09}
+templatekey: Text
+created: 20200731T080002Z
+
+----field----
+field: {84ECE662-5034-40CB-9C60-744DB64BB294}
+name: Field Key
+key: field key
+content-length: 32
+
+0F9FCF83E720499489D13954DC26CD39
+----field----
+field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
+name: Conditions
+key: conditions
+content-length: 22
+
+{"fieldConditions":[]}
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 1
+
+0
+----version----
+language: de-DE
+version: 1
+revision: b40449f0-3245-4028-89cc-3d4812357baa
+
+----field----
+field: {9666782B-21BB-40CE-B38F-8F6C53FA5070}
+name: Text
+key: text
+content-length: 50
+
+Vielen Dank, Ihre Präferenzen wurden aktualisiert!
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20200731T080002Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+b40449f0-3245-4028-89cc-3d4812357baa
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20200731T081923Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
