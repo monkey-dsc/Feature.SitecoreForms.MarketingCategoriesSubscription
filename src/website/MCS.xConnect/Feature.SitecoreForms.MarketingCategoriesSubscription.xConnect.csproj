@@ -4,7 +4,7 @@
         <AssemblyName>Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect</AssemblyName>
         <RootNamespace>Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect</RootNamespace>
         <Configurations>Debug;Release;</Configurations>		
-		<ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+        <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     </PropertyGroup>
 
     <PropertyGroup Label="Build">
@@ -19,7 +19,7 @@
 
     <PropertyGroup Label="Package">
         <Authors>Dirk Schäfauer</Authors>
-        <Company>CAMAO IDC GmbH</Company>
+        <Company></Company>
         <Copyright>Copyright © 2020 - Dirk Schäfauer</Copyright>
         <Description></Description>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>

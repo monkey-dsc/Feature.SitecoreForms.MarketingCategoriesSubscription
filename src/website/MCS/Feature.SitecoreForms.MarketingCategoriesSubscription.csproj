@@ -4,7 +4,7 @@
         <AssemblyName>Feature.SitecoreForms.MarketingCategoriesSubscription</AssemblyName>
         <RootNamespace>Feature.SitecoreForms.MarketingCategoriesSubscription</RootNamespace>
         <Configurations>Debug;Release;</Configurations>		
-		<ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+        <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     </PropertyGroup>
 
     <PropertyGroup Label="Build">
@@ -19,8 +19,8 @@
 
     <PropertyGroup Label="Package">
         <Authors>Dirk Schäfauer</Authors>
-        <Company>CAMAO IDC GmbH</Company>
-        <Copyright>Copyright © 2019 - Dirk Schäfauer</Copyright>
+        <Company></Company>
+        <Copyright>Copyright © 2020 Dirk Schäfauer</Copyright>
         <Description></Description>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageIconUrl></PackageIconUrl>
