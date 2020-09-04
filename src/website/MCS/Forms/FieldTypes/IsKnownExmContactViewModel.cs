@@ -12,6 +12,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
     [Serializable]
     public class IsKnownContactViewModel : InputViewModel<string>
     {
+        [NonSerialized]
         private readonly IXConnectContactService _xConnectContactService;
 
         public IsKnownContactViewModel() : this(ServiceLocator.ServiceProvider.GetService<IXConnectContactService>())

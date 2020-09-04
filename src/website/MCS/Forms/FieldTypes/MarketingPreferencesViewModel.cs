@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Contract.Services;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,9 +23,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.FieldTypes
     [Serializable]
     public class MarketingPreferencesViewModel : CheckBoxListViewModel
     {
+        [NonSerialized]
         private readonly IXConnectContactService _xConnectContactService;
+        [NonSerialized]
         private readonly IManagerRootService _managerRootService;
+        [NonSerialized]
         private readonly IMarketingPreferencesService _marketingPreferencesService;
+        [NonSerialized]
         private readonly ILogger _logger;
 
         public MarketingPreferencesViewModel() : this(

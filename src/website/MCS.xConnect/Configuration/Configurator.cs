@@ -12,12 +12,12 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Configu
     {
         public void Configure(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<IExmContactService, ExmContactService>();
+            serviceCollection.AddTransient<IExmContactService, ExmContactService>();
 
             // XConnect
-            serviceCollection.AddSingleton<IXConnectContactFactory, XConnectContactFactory>();
-            serviceCollection.AddSingleton<IXConnectContactRepository, XConnectContactRepository>();
-            serviceCollection.AddSingleton<IXConnectContactService, XConnectContactService>();
+            serviceCollection.AddTransient<IXConnectContactFactory, XConnectContactFactory>();
+            serviceCollection.AddTransient<IXConnectContactRepository, XConnectContactRepository>();
+            serviceCollection.AddTransient<IXConnectContactService, XConnectContactService>();
         }
     }
 }

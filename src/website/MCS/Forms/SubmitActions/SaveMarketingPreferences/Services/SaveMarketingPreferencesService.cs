@@ -24,8 +24,11 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
     public class SaveMarketingPreferencesService<T>
         : ISaveMarketingPreferencesService<T> where T : SaveMarketingPreferencesData
     {
+        [NonSerialized]
         private readonly IXConnectContactService _xConnectContactService;
+        [NonSerialized]
         private readonly IExmContactService _exmContactService;
+        [NonSerialized]
         private readonly IManagerRootService _managerRootService;
 
         public SaveMarketingPreferencesService() : this(

@@ -27,11 +27,17 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
 {
     public abstract class SaveMarketingPreferencesBase<T> : SubmitActionBase<T> where T : SaveMarketingPreferencesData
     {
+        [NonSerialized]
         protected new readonly ILogger Logger;
+        [NonSerialized]
         private readonly IXConnectContactService _xConnectContactService;
+        [NonSerialized]
         private readonly IXConnectContactFactory _xConnectContactFactory;
+        [NonSerialized]
         private readonly ISaveMarketingPreferencesService<T> _saveMarketingPreferencesService;
+        [NonSerialized]
         private readonly IMarketingPreferencesService _marketingPreferenceService;
+        [NonSerialized]
         private readonly IExmSubscriptionClientApiService _exmSubscriptionClientApiService;
         private readonly bool _useDoubleOptIn = Settings.GetBoolSetting("NewsletterSubscription.UseDoubleOptInForSubscription", true); // GDPR, sorry for the default value!
 

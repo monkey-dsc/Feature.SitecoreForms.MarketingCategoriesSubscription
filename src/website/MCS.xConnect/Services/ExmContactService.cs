@@ -13,14 +13,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Service
 {
     internal sealed class ExmContactService : ContactService, IExmContactService
     {
-        private readonly IContactService _contactService;
         private readonly XConnectRetry _xConnectRetry;
 
         private const double Delay = 100;
         private const int RetryCount = 3;
 
-        public ExmContactService() : this(
-            ServiceLocator.ServiceProvider.GetService<IContactService>(),
+        public ExmContactService()
+            : this(
             ServiceLocator.ServiceProvider.GetService<IXConnectClientFactory>(),
             ServiceLocator.ServiceProvider.GetService<XConnectRetry>(),
             ServiceLocator.ServiceProvider.GetService<ILogger>())
@@ -28,14 +27,12 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Service
         }
 
         public ExmContactService(
-            IContactService contactService,
             IXConnectClientFactory xConnectClientFactory,
             XConnectRetry xConnectRetry,
-            ILogger logger) : base(xConnectClientFactory, xConnectRetry, logger)
+            ILogger logger)
+            : base(xConnectClientFactory, xConnectRetry, logger)
         {
-            Condition.Requires(contactService, nameof(contactService)).IsNotNull();
             Condition.Requires(xConnectRetry, nameof(xConnectRetry)).IsNotNull();
-            _contactService = contactService;
             _xConnectRetry = xConnectRetry;
         }
 

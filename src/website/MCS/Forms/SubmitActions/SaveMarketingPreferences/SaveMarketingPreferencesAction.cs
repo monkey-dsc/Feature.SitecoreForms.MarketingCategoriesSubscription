@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Constants;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Contract.Services;
@@ -21,6 +22,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.Forms.SubmitActi
     // Reason: Used by custom submit action
     public class SaveMarketingPreferencesAction : SaveMarketingPreferencesBase<SaveMarketingPreferencesData>
     {
+        [NonSerialized]
         private readonly IXConnectContactService _xConnectContactService;
 
         public SaveMarketingPreferencesAction(ISubmitActionData submitActionData)
