@@ -63,13 +63,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Views\FormBuilder\MCS.FieldTemplates\IsKnownContact.cshtml" />
-      <None Remove="Views\FormBuilder\MCS.FieldTemplates\MarketingPreferences.cshtml" />
+      <None Remove="Views\FormBuilder\MCSFieldTemplates\IsKnownContact.cshtml" />
+      <None Remove="Views\FormBuilder\MCSFieldTemplates\MarketingPreferences.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="Views\FormBuilder\MCS.FieldTemplates\IsKnownContact.cshtml" />
-      <Content Include="Views\FormBuilder\MCS.FieldTemplates\MarketingPreferences.cshtml" />
+      <Content Include="Views\FormBuilder\MCSFieldTemplates\IsKnownContact.cshtml" />
+      <Content Include="Views\FormBuilder\MCSFieldTemplates\MarketingPreferences.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

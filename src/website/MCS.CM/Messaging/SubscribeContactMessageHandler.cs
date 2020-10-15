@@ -3,10 +3,10 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.Contract.MessageBus;
 using Sitecore.EmailCampaign.Model.Messaging;
-using Sitecore.Framework.Messaging;
 using Sitecore.ExM.Framework.Diagnostics;
-using Sitecore.Framework.Messaging.DeferStrategies;
 using Sitecore.Framework.Conditions;
+using Sitecore.Framework.Messaging;
+using Sitecore.Framework.Messaging.DeferStrategies;
 
 namespace Feature.SitecoreForms.MarketingCategoriesSubscription.CM.Messaging
 {
@@ -48,13 +48,13 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.CM.Messaging
             }
             else
             {
-                _logger.LogDebug("[SubscribeContactMessageHandler] defered message.");
+                _logger.LogDebug("[SubscribeContactMessageHandler] deferred message.");
             }
         }
 
         private HandlerResult SubscribeContact(SubscribeContactMessage message)
         {
-            _logger.LogDebug(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", new object[] { "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier })));
+            _logger.LogDebug(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier)));
 
             var result = _subscribeContactService.HandleContactSubscription(message.RecipientListId, message.ContactIdentifier, message.ManagerRootId, message.ContextLanguage, message.SendSubscriptionConfirmation);
 
@@ -63,7 +63,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.CM.Messaging
                 return new HandlerResult(HandlerResultType.Successful);
             }
 
-            _logger.LogError(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Failed to subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", new object[] { "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier })));
+            _logger.LogError(FormattableString.Invariant(FormattableStringFactory.Create("[{0}] Failed to subscribe contact to recipient list. ManagerRootId '{1}', RecipientListId '{2}', ContactIdentifier '{3}'.", "SubscribeContactMessageHandler", message.ManagerRootId, message.RecipientListId, message.ContactIdentifier?.Identifier)));
             return new HandlerResult(HandlerResultType.Error);
         }
     }
