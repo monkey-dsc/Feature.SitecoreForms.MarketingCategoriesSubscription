@@ -69,6 +69,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Sitecore.EmailCampaign.Cd" Version="9.2.0" />
       <PackageReference Include="Sitecore.EmailCampaign.Cm" Version="9.2.0" />
       <PackageReference Include="Sitecore.Kernel" Version="9.2.0">
           <PrivateAssets>all</PrivateAssets>
