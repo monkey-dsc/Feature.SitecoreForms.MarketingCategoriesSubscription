@@ -62,7 +62,7 @@ The module comes with a sample *"Newsletter Subscription Form"* to demonstrate h
 
 ![TreeView in the Sitecore Forms Backend](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/blob/master/readme_images/TreeViewsFormsBackend.PNG "TreeView in the Sitecore Forms Backend")
 
-![TreeView in the Sitecore Forms Backend](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/blob/master/readme_images/SubmitAction.PNG "SubmitAction Configuration")
+![SubmitAction Configuration](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/blob/master/readme_images/SubmitAction.PNG "SubmitAction Configuration")
 
 **Thats it!**
 
