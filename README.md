@@ -31,6 +31,7 @@ Much theory but once the module is installed it's very easy to use! Read more in
 - [Marketing Category Subscription - Part 6 - Segmented Lists](https://camao.one/blog/sitecore-9-1-marketing-category-subscription-part-6-segmented-lists/)
 
 Or watch my video from my presentation on the SUG Hungary:
+
 [Sitecore Usergroup Hungary Presentation, September, 17th 2020](https://youtu.be/TyHjCg2taZo)
 
 ## Installation
