@@ -60,15 +60,13 @@ The module comes with a sample *"Newsletter Subscription Form"* to demonstrate h
 3. **Double-Opt-In only:** The *"Marketing Categories Field"* should point to the *"Global Subscription List"*
 4. There is a *"Submit Action"* which maps the field types to the contact. Please ensure in the settings of the action is mapped to the fields in your form.
 
-**Thats it!**
-
 ![TreeView in the Sitecore Forms Backend](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/blob/master/readme_images/TreeViewsFormsBackend.PNG "TreeView in the Sitecore Forms Backend")
 
-[BILDER VOM BACKEND]
+![TreeView in the Sitecore Forms Backend](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/blob/master/readme_images/SubmitAction.PNG "SubmitAction Configuration")
 
-You can now start to create your own *"Marketing Categories"*. They are located under `/sitecore/system/Marketing Control Panel/Taxonomies/Marketing categories` and simply add them to your *"Manager Root"*:
+**Thats it!**
 
-[BILD]
+You can now start to create your own *"Marketing Categories"*. They are located under `/sitecore/system/Marketing Control Panel/Taxonomies/Marketing categories` and simply add them to your *"Manager Root"*.
 
 ## Compatibility
 
