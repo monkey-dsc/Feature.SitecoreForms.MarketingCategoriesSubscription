@@ -43,7 +43,7 @@ This module makes use of the [Sitecore Message Bus](https://doc.sitecore.com/dev
 
 If access rights are set to the *"messaginguser"* the installation is quite easy:
 1. Open the Update Installation Wizard: *http://{YOURINSTANCE}/sitecore/admin/UpdateInstallationWizard.aspx*
-2. Install the *"update package"* suiteable to your Sitecore version, found in the [releases](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/releases). Refer to [Compatibility](#compatibility) which version of the module you need.
+2. Install the *"update package"* suiteable to your Sitecore version, found in the [releases](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/releases). Refer to [Compatibility](#compatibility) which version of the module you need *(I'm in a hurry to get up to date!)*.
 
 ## Usage
 
@@ -61,6 +61,8 @@ The module comes with a sample *"Newsletter Subscription Form"* to demonstrate h
 4. There is a *"Submit Action"* which maps the field types to the contact. Please ensure in the settings of the action is mapped to the fields in your form.
 
 **Thats it!**
+
+![TreeView in the Sitecore Forms Backend](https://github.com/monkey-dsc/Feature.SitecoreForms.MarketingCategoriesSubscription/blob/master/readme_images/TreeViewsFormsBackend.PNG "TreeView in the Sitecore Forms Backend")
 
 [BILDER VOM BACKEND]
 
