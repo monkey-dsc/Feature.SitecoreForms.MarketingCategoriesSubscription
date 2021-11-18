@@ -34,7 +34,7 @@
     <PackagePublisher>monkey.dsc</PackagePublisher>
     <PackageVersion />
     <PackageReadme />
-    <SitecoreAssemblyPath>$(UserProfile)\.nuget\packages</SitecoreAssemblyPath>
+    <SitecoreAssemblyPath></SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>False</PackageExcludeCode>
@@ -49,7 +49,7 @@
     <PackagePublisher>monkey.dsc</PackagePublisher>
     <PackageVersion />
     <PackageReadme />
-    <SitecoreAssemblyPath>$(UserProfile)\.nuget\packages</SitecoreAssemblyPath>
+    <SitecoreAssemblyPath></SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>False</PackageExcludeCode>
