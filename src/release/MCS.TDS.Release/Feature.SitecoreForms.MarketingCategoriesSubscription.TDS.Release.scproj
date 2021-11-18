@@ -34,7 +34,8 @@
     <PackagePublisher>monkey.dsc</PackagePublisher>
     <PackageVersion />
     <PackageReadme />
-    <SitecoreAssemblyPath></SitecoreAssemblyPath>
+    <SitecoreAssemblyPath>
+    </SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>False</PackageExcludeCode>
@@ -49,11 +50,15 @@
     <PackagePublisher>monkey.dsc</PackagePublisher>
     <PackageVersion />
     <PackageReadme />
-    <SitecoreAssemblyPath></SitecoreAssemblyPath>
+    <SitecoreAssemblyPath>
+    </SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>False</PackageExcludeCode>
     <AddDateTimeToPackageName>True</AddDateTimeToPackageName>
+    <ItemResourceBuildResourceFile>True</ItemResourceBuildResourceFile>
+    <ItemResourceFilePrefix>Feature.SitecoreForms.MarketingCategoriesSubscription</ItemResourceFilePrefix>
+    <ItemResourceDeployResources>True</ItemResourceDeployResources>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttributes Include="AssemblyFileVersion">

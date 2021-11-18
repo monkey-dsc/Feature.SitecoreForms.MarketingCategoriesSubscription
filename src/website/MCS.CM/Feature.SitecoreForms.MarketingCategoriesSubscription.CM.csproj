@@ -13,7 +13,7 @@
         <OutputTypeEx>library</OutputTypeEx>
         <OutputPath>..\..\..\bin\</OutputPath>
         <OutputPath>..\..\..\bin\</OutputPath>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
