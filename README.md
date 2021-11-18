@@ -72,6 +72,7 @@ You can now start to create your own *"Marketing Categories"*. They are located 
 ## Compatibility
 
 - v1.0.0 - v1.0.2 is for Sitecore 9.2.0
+- v1.0.3 is for Sitecore 9.3.0
 
 ## Architectural design decisions:
 
@@ -86,6 +87,9 @@ You can now start to create your own *"Marketing Categories"*. They are located 
 > If you checkout the repository to do modifications, everytime you build the solution a new *"update package"* will be generated in *"{SOLUTION_DIRECTORY}\src\release\MCS.TDS.Release\bin\Package_Release"*
 
 ## Changelog
+#### v1.0.3
+- Sitecore 9.3.0 Support
+- temporary fix: package reference issues in TDS
 #### v1.0.2
 - Workaround for Issue #5: *MarketingPreferencesService throws a NullReferenceException if the Instance is configured to "ContentManagement" only*
 #### v1.0.1
