@@ -59,9 +59,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Sitecore.EmailCampaign.Cd" Version="9.3.0" />
-      <PackageReference Include="Sitecore.ExM.Framework" Version="9.3.0" />
-      <PackageReference Include="Sitecore.Kernel" Version="9.3.0">
+      <PackageReference Include="Sitecore.EmailCampaign.Cd" Version="10.1.1" />
+      <PackageReference Include="Sitecore.ExM.Framework" Version="10.1.1" />
+      <PackageReference Include="Sitecore.Kernel" Version="10.1.1">
           <PrivateAssets>all</PrivateAssets>
       </PackageReference>
       <PackageReference Include="System.Runtime" Version="4.3.1" />
