@@ -5,6 +5,7 @@ using Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Models;
 using Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Analytics;
+using Sitecore.Analytics.Tracking.Identification;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.DependencyInjection;
 using Sitecore.EmailCampaign.Model.XConnect.Facets;
@@ -18,6 +19,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Service
     {
         private readonly IExmContactService _exmContactService;
         private readonly IXConnectContactRepository _xConnectContactRepository;
+        private readonly IContactIdentificationManager _contactIdentificationManager;
 
         private const double Delay = 100;
         private const int RetryCount = 3;
@@ -25,16 +27,19 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Service
         // ReSharper disable once UnusedMember.Global
         public XConnectContactService() : this(
             ServiceLocator.ServiceProvider.GetService<IExmContactService>(),
-            ServiceLocator.ServiceProvider.GetService<IXConnectContactRepository>())
+            ServiceLocator.ServiceProvider.GetService<IXConnectContactRepository>(),
+            ServiceLocator.ServiceProvider.GetService<IContactIdentificationManager>())
         {
         }
 
-        public XConnectContactService(IExmContactService exmContactService, IXConnectContactRepository xConnectContactRepository)
+        public XConnectContactService(IExmContactService exmContactService, IXConnectContactRepository xConnectContactRepository, IContactIdentificationManager contactIdentificationManager)
         {
             Condition.Requires(exmContactService, nameof(exmContactService)).IsNotNull();
             Condition.Requires(xConnectContactRepository, nameof(xConnectContactRepository)).IsNotNull();
+            Condition.Requires(contactIdentificationManager, nameof(contactIdentificationManager)).IsNotNull();
             _exmContactService = exmContactService;
             _xConnectContactRepository = xConnectContactRepository;
+            _contactIdentificationManager = contactIdentificationManager;
         }
 
         public void CheckIdentifier(IXConnectContact contact)
@@ -106,9 +111,17 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Service
                 return;
             }
 
-            if (Tracker.Current.Session != null)
+            if (Tracker.Current.Session == null)
             {
-                Tracker.Current.Session.IdentifyAs(contact.IdentifierSource, contact.IdentifierValue);
+                return;
+            }
+
+            // ToDo: Remove old implementation
+            // Tracker.Current.Session.IdentifyAs(contact.IdentifierSource, contact.IdentifierValue);
+            var result = _contactIdentificationManager.IdentifyAs(new KnownContactIdentifier(contact.IdentifierSource, contact.IdentifierValue));
+            if(!result.Success)
+            {
+                // ToDo: Handle error, check result.ErrorCode and result.ErrorMessage for more details
             }
         }
 

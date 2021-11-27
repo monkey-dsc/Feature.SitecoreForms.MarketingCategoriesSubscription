@@ -24,7 +24,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Reposit
             using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
                 var contactReference = new IdentifiedContactReference(xConnectContact.IdentifierSource, xConnectContact.IdentifierValue);
-                var contact = client.Get(contactReference, new ContactExpandOptions(PersonalInformation.DefaultFacetKey, EmailAddressList.DefaultFacetKey));
+                var contact = client.Get(contactReference, new ContactExecutionOptions(new ContactExpandOptions(PersonalInformation.DefaultFacetKey, EmailAddressList.DefaultFacetKey)));
                 if (contact == null)
                 {
                     var newContact = new Sitecore.XConnect.Contact(new ContactIdentifier(contactReference.Source, contactReference.Identifier, ContactIdentifierType.Known));
@@ -69,7 +69,7 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Reposit
 
             using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
-                var contact = client.Get(reference, expandOptions);
+                var contact = client.Get(reference, new ContactExecutionOptions(expandOptions));
                 if (contact == null)
                 {
                     return;
@@ -78,9 +78,8 @@ namespace Feature.SitecoreForms.MarketingCategoriesSubscription.xConnect.Reposit
                 MakeContactKnown(client, contact);
 
                 var facet = contact.GetFacet<T>() ?? createFacet();
-                var data = facet;
-                updateFacets(data);
-                client.SetFacet(contact, data);
+                updateFacets(facet);
+                client.SetFacet(contact, facet);
                 client.Submit();
             }
         }
