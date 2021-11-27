@@ -13,7 +13,7 @@
         <OutputTypeEx>library</OutputTypeEx>
         <OutputPath>..\..\..\bin\</OutputPath>
         <OutputPath>..\..\..\bin\</OutputPath>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
@@ -79,13 +79,13 @@
       <PackageReference Include="Microsoft.AspNet.Mvc.de" Version="5.2.4">
           <PrivateAssets>all</PrivateAssets>
       </PackageReference>
-      <PackageReference Include="Sitecore.ExM.Framework" Version="9.2.0" />
-      <PackageReference Include="Sitecore.ExperienceForms.Mvc" Version="9.2.0" />
-      <PackageReference Include="Sitecore.Framework.Messaging.Abstractions" Version="4.0.1" />
-      <PackageReference Include="Sitecore.Kernel" Version="9.2.0">
+      <PackageReference Include="Sitecore.ExM.Framework" Version="10.1.1" />
+      <PackageReference Include="Sitecore.ExperienceForms.Mvc" Version="10.1.1" />
+      <PackageReference Include="Sitecore.Framework.Messaging.Abstractions" Version="5.0.1" />
+      <PackageReference Include="Sitecore.Kernel" Version="10.1.1">
           <PrivateAssets>all</PrivateAssets>
       </PackageReference>
-      <PackageReference Include="Sitecore.Mvc" Version="9.2.0" />
+      <PackageReference Include="Sitecore.Mvc" Version="10.1.1" />
       <PackageReference Include="System.Runtime" Version="4.3.1" />
       <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
     </ItemGroup>
